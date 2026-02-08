@@ -1,0 +1,53 @@
+name: Validar datos y tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: |
+          pip install pytest
+          pip install -r requirements.txt
+
+      - name: Validar datos
+        run: python scripts/validate_sources.py --country PE
+
+      - name: Construir base de datos
+        run: python scripts/build_db.py --country PE
+
+      - name: Correr tests
+        run: python -m pytest tests/ -v
+
+      - name: Verificar DB generada
+        run: |
+          python -c "
+          import sqlite3
+          conn = sqlite3.connect('build/truths_and_rights_pe.db')
+          c = conn.cursor()
+          c.execute('SELECT COUNT(*) FROM situations')
+          sits = c.fetchone()[0]
+          c.execute('SELECT COUNT(*) FROM rights')
+          rights = c.fetchone()[0]
+          c.execute('SELECT COUNT(*) FROM legal_sources')
+          sources = c.fetchone()[0]
+          print(f'DB OK: {sits} situaciones, {rights} derechos, {sources} fuentes')
+          assert sits >= 9, f'Muy pocas situaciones: {sits}'
+          assert rights >= 20, f'Muy pocos derechos: {rights}'
+          assert sources >= 40, f'Muy pocas fuentes: {sources}'
+          conn.close()
+          "
