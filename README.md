@@ -7,6 +7,8 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Country: Peru](https://img.shields.io/badge/Country-Peru-red.svg)](#)
 [![Status: In Development](https://img.shields.io/badge/Status-In%20Development-yellow.svg)](#)
+[![Portal de Datos](https://img.shields.io/badge/Portal-Live-brightgreen.svg)](https://ellokoakrata.github.io/truths-and-rights/)
+[![Validar datos y tests](https://github.com/ELLokoAkrata/truths-and-rights/actions/workflows/validate.yml/badge.svg)](https://github.com/ELLokoAkrata/truths-and-rights/actions/workflows/validate.yml)
 
 ---
 
@@ -119,6 +121,47 @@ $ python scripts/cli.py "me encuentran con marihuana"
 | "cuánto tiempo me pueden retener" | Límites de retención |
 | "no me dicen por qué me paran" | Sin motivo informado |
 | "me encuentran con marihuana" | Posesión de cannabis |
+
+---
+
+## Portal publico de datos
+
+Los datos legales del proyecto estan disponibles como sitio web estatico:
+
+**[https://ellokoakrata.github.io/truths-and-rights/](https://ellokoakrata.github.io/truths-and-rights/)**
+
+El portal incluye:
+- Estado de emergencia actual con dias restantes
+- Las 9 situaciones con derechos, acciones y contactos
+- Los 20+ derechos agrupados por categoria
+- Las 43+ fuentes legales con enlaces oficiales
+- Mitos desmentidos con base legal
+- Contactos de emergencia
+- Dashboard de verificacion de frescura de datos
+
+El sitio se regenera automaticamente con cada cambio en los datos via GitHub Pages.
+
+Para generar el sitio localmente:
+```bash
+make site          # Genera site/
+make serve         # Sirve en localhost:8000
+```
+
+---
+
+## Automatizacion
+
+El proyecto tiene workflows automatizados de GitHub Actions:
+
+| Workflow | Frecuencia | Que hace |
+|---|---|---|
+| **Check emergencia** | Semanal (lunes) | Verifica si el decreto de emergencia vencio o esta por vencer |
+| **Check fuentes** | Quincenal (dia 1 y 15) | Verifica vigencia de las 43+ fuentes legales |
+| **Scrape completo** | Mensual (dia 1) | Descarga textos actualizados de fuentes oficiales |
+| **Validacion** | Cada push/PR | Valida datos, construye DB, corre tests |
+| **Deploy portal** | Cada cambio en datos | Regenera y publica el sitio estatico |
+
+Los workflows **nunca modifican datos legales automaticamente**. Solo crean Issues para revision humana. Los datos legales requieren verificacion de abogado.
 
 ---
 

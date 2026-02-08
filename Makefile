@@ -1,6 +1,6 @@
 # Truths and Rights — Tareas comunes
 
-.PHONY: build validate scrape check-emergency clean help
+.PHONY: build validate scrape check-emergency clean help site serve
 
 help: ## Mostrar esta ayuda
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
@@ -29,8 +29,15 @@ check-updates: ## Verificar si hay actualizaciones en fuentes
 test: build-pe ## Correr todos los tests con pytest
 	python -m pytest tests/ -v
 
+site: build-pe ## Generar sitio estatico
+	python3 scripts/generate_site.py
+
+serve: site ## Servir sitio localmente (puerto 8000)
+	python3 -m http.server 8000 --directory site
+
 clean: ## Limpiar archivos generados
 	rm -rf build/
+	rm -rf site/
 	rm -rf data/PE/sources/raw/
 
 stats: ## Mostrar estadísticas del proyecto

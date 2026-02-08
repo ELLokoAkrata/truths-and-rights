@@ -3,6 +3,9 @@
 *.sqlite
 *.sqlite3
 
+# Generated site (built in CI)
+site/
+
 # Scraped raw files (downloaded for auditing, not versioned)
 data/*/sources/raw/
 

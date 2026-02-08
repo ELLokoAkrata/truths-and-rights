@@ -34,6 +34,8 @@ from datetime import datetime
 from pathlib import Path
 from urllib.parse import urljoin, quote
 
+from history import append_to_history
+
 # Fix encoding on Windows consoles
 if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
@@ -41,6 +43,8 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
 
 try:
     import requests
+    from requests.adapters import HTTPAdapter
+    from urllib3.util.retry import Retry
     from bs4 import BeautifulSoup
 except ImportError:
     print("ERROR: Se necesitan 'requests' y 'beautifulsoup4'.")
@@ -170,7 +174,30 @@ def make_session():
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'Accept-Language': 'es-PE,es;q=0.9,en;q=0.5',
     })
+
+    # Retry con backoff exponencial para sitios gubernamentales inestables
+    retry_strategy = Retry(
+        total=3,
+        backoff_factor=2,
+        status_forcelist=[429, 500, 502, 503, 504],
+    )
+    adapter = HTTPAdapter(max_retries=retry_strategy)
+    session.mount("https://", adapter)
+    session.mount("http://", adapter)
+
     return session
+
+
+def write_output_json(data, output_path=None):
+    """Escribe resultado estructurado a JSON."""
+    if output_path is None:
+        output_path = RAW_DIR / "latest_check.json"
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    print(f"  Output JSON: {output_path}")
+    return output_path
 
 
 # ============================================================
@@ -565,6 +592,7 @@ class UpdateChecker:
         print(f"  Total fuentes a verificar: {len(all_sources)}")
 
         results = {
+            'check_type': 'sources',
             'verified': [],
             'needs_update': [],
             'errors': [],
@@ -607,22 +635,48 @@ class UpdateChecker:
         with open(contexts_path, 'r', encoding='utf-8') as f:
             contexts = json.load(f)
 
+        results = {
+            'check_type': 'emergency',
+            'timestamp': datetime.now().isoformat(),
+            'verified': [],
+            'needs_update': [],
+            'errors': [],
+        }
+
         for ctx in contexts:
             if ctx.get('context_type') == 'estado_emergencia':
                 end_date = ctx.get('end_date')
                 if end_date:
                     end = datetime.strptime(end_date, '%Y-%m-%d')
                     today = datetime.now()
+                    days_left = (end - today).days
 
                     if today > end:
                         print(f"  VENCIDO: {ctx['decree_number']}")
                         print(f"    Vencio: {end_date}")
                         print(f"    ACCION: Verificar si fue renovado en El Peruano")
+                        results['needs_update'].append({
+                            'id': ctx['id'],
+                            'decree': ctx['decree_number'],
+                            'status': 'expired',
+                            'end_date': end_date,
+                            'days_left': days_left,
+                        })
                     else:
-                        days_left = (end - today).days
                         print(f"  Vigente: {ctx['decree_number']} ({days_left} dias restantes)")
                         if days_left <= 7:
                             print(f"    Vence pronto - verificar renovacion")
+                            results['needs_update'].append({
+                                'id': ctx['id'],
+                                'decree': ctx['decree_number'],
+                                'status': 'expiring_soon',
+                                'end_date': end_date,
+                                'days_left': days_left,
+                            })
+                        else:
+                            results['verified'].append(ctx['id'])
+
+        return results
 
 
 # ============================================================
@@ -674,8 +728,17 @@ def check_updates():
     """Verificar actualizaciones sin descargar."""
     ensure_dirs()
     checker = UpdateChecker()
-    checker.check_all_sources()
-    checker.check_emergency_status()
+    sources_report = checker.check_all_sources()
+    emergency_report = checker.check_emergency_status()
+    return {
+        'check_type': 'sources',
+        'timestamp': datetime.now().isoformat(),
+        'sources': sources_report,
+        'emergency': emergency_report,
+        'verified': sources_report.get('verified', []),
+        'needs_update': sources_report.get('needs_update', []) + emergency_report.get('needs_update', []),
+        'errors': sources_report.get('errors', []),
+    }
 
 
 # ============================================================
@@ -692,6 +755,8 @@ def main():
                         help='Verificar vigencia de fuentes (sin descargar)')
     parser.add_argument('--check-emergency', action='store_true',
                         help='Verificar estados de emergencia')
+    parser.add_argument('--output-json', action='store_true',
+                        help='Escribir resultado estructurado a data/PE/sources/raw/latest_check.json')
     parser.add_argument('--source', choices=['tc', 'peruano', 'congreso'],
                         help='Fuente especifica')
     parser.add_argument('--query', type=str,
@@ -699,33 +764,69 @@ def main():
 
     args = parser.parse_args()
 
-    if args.check_updates:
-        check_updates()
-    elif args.check_emergency:
-        ensure_dirs()
-        UpdateChecker().check_emergency_status()
-    elif args.all:
-        scrape_all()
-    elif args.source and args.query:
-        ensure_dirs()
-        session = make_session()
-        if args.source == 'tc':
-            tc = TCScraper(session)
-            tc.search(args.query)
-        elif args.source == 'peruano':
-            ep = ElPeruanoScraper(session)
-            ep.search_norma(args.query)
-        elif args.source == 'congreso':
-            cs = CongresoScraper(session)
-            cs.search_law(args.query)
-    else:
-        parser.print_help()
-        print("\nEjemplos:")
-        print('  python scrape_official.py --all')
-        print('  python scrape_official.py --check-updates')
-        print('  python scrape_official.py --check-emergency')
-        print('  python scrape_official.py --source tc --query "00413-2022-PHC/TC"')
-        print('  python scrape_official.py --source congreso --query "Decreto Legislativo 1186"')
+    # Exit codes: 0=sin cambios, 1=cambios detectados, 2=errores
+    exit_code = 0
+    report = None
+
+    try:
+        if args.check_updates:
+            report = check_updates()
+        elif args.check_emergency:
+            ensure_dirs()
+            report = UpdateChecker().check_emergency_status()
+        elif args.all:
+            scrape_all()
+            # scrape_all genera su propio resumen; creamos report para historial
+            report = {
+                'check_type': 'full_scrape',
+                'timestamp': datetime.now().isoformat(),
+                'verified': [],
+                'needs_update': [],
+                'errors': [],
+            }
+        elif args.source and args.query:
+            ensure_dirs()
+            session = make_session()
+            if args.source == 'tc':
+                tc = TCScraper(session)
+                tc.search(args.query)
+            elif args.source == 'peruano':
+                ep = ElPeruanoScraper(session)
+                ep.search_norma(args.query)
+            elif args.source == 'congreso':
+                cs = CongresoScraper(session)
+                cs.search_law(args.query)
+        else:
+            parser.print_help()
+            print("\nEjemplos:")
+            print('  python scrape_official.py --all')
+            print('  python scrape_official.py --check-updates')
+            print('  python scrape_official.py --check-emergency')
+            print('  python scrape_official.py --check-emergency --output-json')
+            print('  python scrape_official.py --source tc --query "00413-2022-PHC/TC"')
+            print('  python scrape_official.py --source congreso --query "Decreto Legislativo 1186"')
+            return
+
+        # Determinar exit code basado en resultados
+        if report:
+            if report.get('errors'):
+                exit_code = 2
+            elif report.get('needs_update'):
+                exit_code = 1
+
+            # Escribir output JSON si se solicito
+            if args.output_json:
+                ensure_dirs()
+                write_output_json(report)
+
+            # Guardar en historial
+            append_to_history(report)
+
+    except Exception as e:
+        print(f"\nERROR: {e}", file=sys.stderr)
+        exit_code = 2
+
+    sys.exit(exit_code)
 
 
 if __name__ == "__main__":

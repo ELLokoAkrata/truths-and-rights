@@ -3,8 +3,18 @@ name: Validar datos y tests
 on:
   push:
     branches: [main]
+    paths:
+      - 'data/**'
+      - 'scripts/**'
+      - 'schema/**'
+      - 'tests/**'
   pull_request:
     branches: [main]
+    paths:
+      - 'data/**'
+      - 'scripts/**'
+      - 'schema/**'
+      - 'tests/**'
 
 jobs:
   validate:

@@ -64,23 +64,39 @@ Cada dato legal tiene un nivel de confianza implícito:
 
 Las leyes cambian. Los decretos de emergencia se renuevan. La jurisprudencia evoluciona.
 
-### Monitoreo continuo
+### Monitoreo automatizado
+
+El proyecto cuenta con workflows de GitHub Actions que ejecutan verificaciones automaticas:
+
+| Check | Frecuencia | Que verifica |
+|---|---|---|
+| Estado de emergencia | Semanal (lunes 9 AM Lima) | Decretos vencidos o por vencer (<7 dias) |
+| Vigencia de fuentes | Quincenal (dia 1 y 15) | Fuentes modificadas o desactualizadas |
+| Scrape completo | Mensual (dia 1) | Textos oficiales actualizados |
+| Health check | Semanal | Accesibilidad de sitios gubernamentales |
+
+**Principio clave:** Los workflows nunca modifican datos legales automaticamente. Solo crean Issues para revision humana. Los datos legales requieren verificacion de abogado.
+
+Cada verificacion se registra en `data/PE/verification_history.jsonl` como audit trail.
+
+### Monitoreo manual (complementario)
 - Revisar El Peruano semanalmente para nuevos decretos
 - Revisar el TC mensualmente para nuevas sentencias
-- Verificar estados de emergencia vigentes (cambian cada 30-60 días)
+- Verificar estados de emergencia vigentes (cambian cada 30-60 dias)
 
 ### Versionado
-- Cada actualización de datos legales se documenta en CHANGELOG.md
+- Cada actualizacion de datos legales se documenta en CHANGELOG.md
 - Los datos incluyen campo `updated_at` para rastrear frescura
-- Los datos con más de 6 meses sin verificación se marcan para revisión
+- Los datos con mas de 6 meses sin verificacion se marcan para revision
 
-### Proceso de actualización
-1. Se detecta cambio legal (nueva ley, sentencia, decreto)
-2. Se abre Issue con etiqueta `legal-data` + `urgent` si afecta derechos
-3. Se actualiza la fuente en `legal_sources`
-4. Se actualizan las situaciones, derechos y acciones afectadas
-5. Se genera nueva versión del .db
-6. Se publica actualización de la app
+### Proceso de actualizacion
+1. Se detecta cambio legal (automaticamente via workflow o manualmente)
+2. Se crea Issue con etiqueta `legal-data` + `urgent` si afecta derechos
+3. Se verifica el cambio en la fuente oficial
+4. Se actualiza la fuente en `legal_sources`
+5. Se actualizan las situaciones, derechos y acciones afectadas
+6. Se genera nueva version del .db
+7. Se publica actualizacion de la app y el portal
 
 ---
 

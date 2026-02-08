@@ -153,14 +153,18 @@ Los scripts de este proyecto son herramientas de desarrollo y mantenimiento.
 
 ### Calendario de mantenimiento recomendado
 
-| Tarea | Frecuencia | Comando |
-|---|---|---|
-| **Verificar estado de emergencia** | Cada semana | `python scripts/scrape_official.py --check-emergency` |
-| **Verificar vigencia de fuentes** | Cada 2 semanas | `python scripts/scrape_official.py --check-updates` |
-| **Scrape completo de fuentes** | Cada mes | `python scripts/scrape_official.py --all` |
-| **Correr tests** | Antes de cada commit | `python -m pytest tests/ -v` |
-| **Validar datos** | Antes de cada commit | `python scripts/validate_sources.py --country PE` |
-| **Rebuild de la DB** | Despues de modificar datos | `python scripts/build_db.py --country PE` |
+> **Nota:** Las tres primeras tareas estan **automatizadas con GitHub Actions**.
+> Los workflows crean Issues automaticamente cuando detectan cambios.
+> La ejecucion manual sigue siendo posible para verificaciones inmediatas.
+
+| Tarea | Frecuencia | Comando | Automatizado |
+|---|---|---|---|
+| **Verificar estado de emergencia** | Cada semana | `python scripts/scrape_official.py --check-emergency` | Si (lunes 9 AM Lima) |
+| **Verificar vigencia de fuentes** | Cada 2 semanas | `python scripts/scrape_official.py --check-updates` | Si (dia 1 y 15) |
+| **Scrape completo de fuentes** | Cada mes | `python scripts/scrape_official.py --all` | Si (dia 1) |
+| **Correr tests** | Antes de cada commit | `python -m pytest tests/ -v` | Si (cada push/PR) |
+| **Validar datos** | Antes de cada commit | `python scripts/validate_sources.py --country PE` | Si (cada push/PR) |
+| **Rebuild de la DB** | Despues de modificar datos | `python scripts/build_db.py --country PE` | No |
 
 ### Por que estas frecuencias
 

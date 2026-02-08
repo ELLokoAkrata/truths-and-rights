@@ -1,6 +1,57 @@
 # Changelog
 
-Todos los cambios relevantes de este proyecto se documentan aquí.
+Todos los cambios relevantes de este proyecto se documentan aqui.
+
+## [0.3.0] - 2026-02-08
+
+### Pipeline automatizado y portal publico
+
+**Resumen:** Automatizacion completa del pipeline de verificacion de datos legales y publicacion como portal web accesible.
+
+#### Agregado
+
+- **Portal publico** en GitHub Pages con 8 paginas HTML + status.json
+  - Situaciones, derechos, fuentes legales, estado de emergencia, mitos, contactos
+  - Dashboard de verificacion de frescura de datos
+  - Diseno responsive, mobile-friendly, dark theme
+  - Generador de sitio estatico en Python puro (`scripts/generate_site.py`)
+
+- **Workflows automatizados de GitHub Actions:**
+  - `check-emergency.yml` — verificacion semanal de decretos de emergencia
+  - `check-updates.yml` — verificacion quincenal de vigencia de fuentes
+  - `full-scrape.yml` — scrape mensual completo de fuentes oficiales
+  - `deploy-site.yml` — deploy automatico del portal a GitHub Pages
+  - Todos los workflows crean Issues automaticamente cuando detectan cambios
+  - De-duplicacion de Issues (no crea repetidos)
+
+- **Historial de verificaciones** (`scripts/history.py`)
+  - Formato JSONL en `data/PE/verification_history.jsonl`
+  - Audit trail versionado de todas las verificaciones
+  - Integrado con scrape_official.py
+
+- **Health check de sitios gubernamentales** (`scripts/check_scraper_health.py`)
+  - HEAD requests a TC, El Peruano, Congreso y SPIJ
+  - Reporta sitios caidos
+
+- **Templates de Issues** para cambios en decretos y actualizaciones de fuentes
+  - `.github/ISSUE_TEMPLATE/emergency-decree-change.md`
+  - `.github/ISSUE_TEMPLATE/source-update-needed.md`
+
+#### Mejorado
+
+- `scrape_official.py`: flag `--output-json` para salida estructurada
+- `scrape_official.py`: retry con backoff exponencial (3 reintentos, backoff x2)
+- `scrape_official.py`: codigos de salida (0=sin cambios, 1=cambios, 2=errores)
+- `scrape_official.py`: integracion con modulo de historial
+- `validate.yml`: path filters para solo ejecutar en cambios relevantes
+- Makefile: targets `site` y `serve` para generacion y preview local
+- README: seccion de portal publico, automatizacion y badges
+- CONTRIBUTING: nota de automatizacion en calendario de mantenimiento
+- LEGAL_METHODOLOGY: seccion de monitoreo automatizado
+
+#### Principio clave
+
+Los workflows NUNCA modifican los JSON de datos legales automaticamente. Solo crean Issues para revision humana. Los datos legales requieren verificacion de abogado.
 
 ## [0.2.1] - 2026-02-07
 

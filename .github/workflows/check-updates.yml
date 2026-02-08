@@ -1,0 +1,101 @@
+name: Verificar fuentes (quincenal)
+
+on:
+  schedule:
+    # Dia 1 y 15 de cada mes, 14:00 UTC
+    - cron: '0 14 1,15 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  check-updates:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Verificar vigencia de fuentes
+        id: check
+        run: |
+          cd scripts
+          python scrape_official.py --check-updates --output-json
+          echo "exit_code=$?" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - name: Leer resultado
+        id: result
+        run: |
+          if [ -f data/PE/sources/raw/latest_check.json ]; then
+            NEEDS_UPDATE=$(python3 -c "
+          import json
+          with open('data/PE/sources/raw/latest_check.json') as f:
+              data = json.load(f)
+          items = data.get('needs_update', [])
+          print(len(items))
+          ")
+            echo "needs_update=$NEEDS_UPDATE" >> $GITHUB_OUTPUT
+
+            # Generar body del issue
+            python3 -c "
+          import json
+          with open('data/PE/sources/raw/latest_check.json') as f:
+              data = json.load(f)
+          items = data.get('needs_update', [])
+          if items:
+              body_lines = ['## Fuentes legales desactualizadas\n']
+              body_lines.append(f'Se encontraron {len(items)} fuente(s) que necesitan revision:\n')
+              for item in items:
+                  sid = item.get('id', 'N/A')
+                  reason = item.get('reason', 'Sin detalle')
+                  stype = item.get('source_type', '')
+                  body_lines.append(f'- **{sid}** ({stype}): {reason}')
+              body_lines.append('\n### Acciones requeridas\n')
+              body_lines.append('- [ ] Verificar cambios en la fuente oficial')
+              body_lines.append('- [ ] Actualizar JSON en data/PE/sources/')
+              body_lines.append('- [ ] Revision por abogado si el cambio es sustantivo')
+              body_lines.append('- [ ] Correr tests: make test')
+              body_lines.append(f'\n_Verificacion automatica: {data.get(\"timestamp\", \"N/A\")}_')
+              with open('issue_body.txt', 'w') as out:
+                  out.write('\n'.join(body_lines))
+          " 2>/dev/null || true
+          else
+            echo "needs_update=0" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Crear Issue si hay fuentes desactualizadas
+        if: steps.result.outputs.needs_update != '0'
+        run: |
+          EXISTING=$(gh issue list --label "legal-data,legal-review" --state open --limit 1 --json number -q '.[0].number' || echo "")
+          if [ -z "$EXISTING" ]; then
+            BODY=$(cat issue_body.txt 2>/dev/null || echo "Verificacion automatica detecto fuentes desactualizadas.")
+            gh issue create \
+              --title "Fuentes legales: revision de vigencia necesaria" \
+              --body "$BODY" \
+              --label "legal-data,legal-review"
+          else
+            echo "Issue #$EXISTING ya existe, no se crea duplicado."
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit historial
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -f data/PE/verification_history.jsonl ]; then
+            git add data/PE/verification_history.jsonl
+            git diff --staged --quiet || git commit -m "chore: registro de verificacion de fuentes [auto]"
+            git push
+          fi
