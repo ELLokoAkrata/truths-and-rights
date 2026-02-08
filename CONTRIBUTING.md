@@ -135,7 +135,55 @@ Lee [ADDING_A_COUNTRY.md](docs/ADDING_A_COUNTRY.md) — necesitas:
 
 ---
 
-## Flujo de contribución
+## Scripts y herramientas (solo para desarrolladores/IAs)
+
+Los scripts de este proyecto son herramientas de desarrollo y mantenimiento.
+**El usuario final no los ejecuta** — solo usa la app movil, que ya tiene todo empaquetado.
+
+### Quien ejecuta cada script
+
+| Script | Quien lo corre | Proposito |
+|---|---|---|
+| `scripts/build_db.py` | Desarrollador / IA / CI | Genera la DB SQLite desde los JSON |
+| `scripts/validate_sources.py` | Desarrollador / IA / CI | Verifica integridad de los datos |
+| `scripts/scrape_official.py` | Desarrollador / IA | Verifica que las leyes siguen vigentes |
+| `scripts/search.py` | La app internamente | Motor de busqueda (libreria) |
+| `scripts/cli.py` | Desarrollador / IA | Probar la experiencia antes de construir la app |
+| `pytest` | Desarrollador / IA / CI | Verificar que nada se rompio |
+
+### Calendario de mantenimiento recomendado
+
+| Tarea | Frecuencia | Comando |
+|---|---|---|
+| **Verificar estado de emergencia** | Cada semana | `python scripts/scrape_official.py --check-emergency` |
+| **Verificar vigencia de fuentes** | Cada 2 semanas | `python scripts/scrape_official.py --check-updates` |
+| **Scrape completo de fuentes** | Cada mes | `python scripts/scrape_official.py --all` |
+| **Correr tests** | Antes de cada commit | `python -m pytest tests/ -v` |
+| **Validar datos** | Antes de cada commit | `python scripts/validate_sources.py --country PE` |
+| **Rebuild de la DB** | Despues de modificar datos | `python scripts/build_db.py --country PE` |
+
+### Por que estas frecuencias
+
+- **Estado de emergencia (semanal):** Los decretos de emergencia en Peru se renuevan cada 30-60 dias. Verificar semanalmente evita que la app informe derechos suspendidos cuando ya no lo estan (o viceversa).
+- **Vigencia de fuentes (quincenal):** Las leyes no cambian a diario, pero modificaciones al Codigo Procesal Penal o nuevas sentencias del TC pueden ocurrir en cualquier momento.
+- **Scrape completo (mensual):** Descargar los textos oficiales actuales para comparar contra lo que tenemos y detectar cambios.
+- **Tests y validacion (cada commit):** Esto lo hace GitHub Actions automaticamente en cada push y PR.
+
+### Flujo de actualizacion de datos
+
+```
+1. Correr check-emergency y check-updates
+2. Si algo cambio:
+   a. Investigar el cambio en la fuente oficial
+   b. Actualizar el JSON correspondiente en data/PE/
+   c. Correr validate + build + tests
+   d. Commit con descripcion del cambio legal
+   e. Si es critico: publicar nueva version de la app
+```
+
+---
+
+## Flujo de contribucion
 
 ```
 1. Abre un Issue describiendo qué quieres hacer
