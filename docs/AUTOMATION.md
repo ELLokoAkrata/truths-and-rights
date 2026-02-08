@@ -307,6 +307,21 @@ make test
 
 ---
 
+## Configuracion inicial de GitHub Pages (solo una vez)
+
+El portal se publica en GitHub Pages. Esta configuracion solo se hace **una vez** al crear el repo:
+
+1. Ir a **Settings** > **Pages** en el repositorio de GitHub
+2. En **Source**, cambiar de "Deploy from a branch" a **GitHub Actions**
+3. No seleccionar ningun template sugerido (Jekyll, Static HTML) — ya tenemos nuestro propio workflow `deploy-site.yml`
+4. Listo. A partir de ahora, cada push a `main` que toque `data/`, `scripts/generate_site.py` o `docs/` regenera y publica el sitio automaticamente
+
+Si el primer deploy falla (porque Pages no estaba configurado cuando el workflow corrio), ir a Actions > "Deploy portal publico" > "Re-run all jobs". Con Pages ya configurado, el re-run funciona.
+
+**URL del portal:** https://ellokoakrata.github.io/truths-and-rights/
+
+---
+
 ## Principio fundamental
 
 **Los workflows NUNCA modifican datos legales automaticamente.** Solo crean Issues para revision humana. Esto es intencional: datos legales incorrectos pueden poner en riesgo a personas reales. Un robot puede detectar que algo cambio, pero solo un humano (idealmente un abogado) debe decidir como actualizar la informacion.

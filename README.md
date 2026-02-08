@@ -10,6 +10,8 @@
 [![Portal de Datos](https://img.shields.io/badge/Portal-Live-brightgreen.svg)](https://ellokoakrata.github.io/truths-and-rights/)
 [![Validar datos y tests](https://github.com/ELLokoAkrata/truths-and-rights/actions/workflows/validate.yml/badge.svg)](https://github.com/ELLokoAkrata/truths-and-rights/actions/workflows/validate.yml)
 
+### [Ver el portal de datos en vivo](https://ellokoakrata.github.io/truths-and-rights/)
+
 ---
 
 ## ¿Qué es esto? / What is this?
