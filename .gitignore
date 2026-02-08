@@ -3,6 +3,9 @@
 *.sqlite
 *.sqlite3
 
+# Scraped raw files (downloaded for auditing, not versioned)
+data/*/sources/raw/
+
 # Python
 __pycache__/
 *.py[cod]
