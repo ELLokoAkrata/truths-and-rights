@@ -1,0 +1,33 @@
+[
+  {
+    "id": "recording_police",
+    "category": "registro",
+    "title": "¿Es legal grabar a la policía?",
+    "description": "Quieres grabar una intervención policial o te dicen que dejes de grabar. Es COMPLETAMENTE LEGAL grabar a la policía.",
+    "keywords": ["grabar", "filmar", "video", "audio", "celular", "camara", "dejar de grabar", "borrar"],
+    "natural_queries": [
+      "puedo grabar a la policía",
+      "es legal filmar a la policía",
+      "me dicen que deje de grabar",
+      "me quieren quitar el celular por grabar",
+      "me piden borrar el video",
+      "me amenazan por grabar"
+    ],
+    "severity": "medium",
+    "icon": "🎥",
+    "parent_situation_id": null,
+    "rights": [
+      {"right_id": "right_record_intervention", "context": "normal", "applies": true, "notes": "La función policial es un acto público. El Director de Defensa Legal PNP confirmó que los ciudadanos pueden filmar."},
+      {"right_id": "right_no_cell_search", "context": "normal", "applies": true, "notes": "No pueden quitarte el celular ni pedir que borres grabaciones."},
+      {"right_id": "right_dignity", "context": "normal", "applies": true, "notes": null},
+      {"right_id": "right_record_intervention", "context": "estado_emergencia_seguridad", "applies": true, "notes": "Este derecho NO se suspende en emergencia."}
+    ],
+    "actions": [
+      {"action_id": "action_demand_recording", "step_order": 1},
+      {"action_id": "action_verbal_dissent", "step_order": 2},
+      {"action_id": "action_call_defensoria", "step_order": 3}
+    ],
+    "time_limits": [],
+    "contacts": ["defensoria_pueblo"]
+  }
+]

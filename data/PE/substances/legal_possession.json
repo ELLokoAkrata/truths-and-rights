@@ -1,0 +1,65 @@
+[
+  {
+    "id": "cannabis",
+    "substance": "Marihuana (Cannabis sativa)",
+    "max_grams": 8.0,
+    "legal_article": "Artículo 299, Código Penal",
+    "notes": "Para consumo personal inmediato. No requiere receta ni autorización.",
+    "is_punishable_below_limit": false,
+    "source_id": "cp_art299"
+  },
+  {
+    "id": "cannabis_derivatives",
+    "substance": "Derivados de marihuana (hashish, etc.)",
+    "max_grams": 2.0,
+    "legal_article": "Artículo 299, Código Penal",
+    "notes": "Para consumo personal inmediato.",
+    "is_punishable_below_limit": false,
+    "source_id": "cp_art299"
+  },
+  {
+    "id": "pbc",
+    "substance": "Pasta básica de cocaína (PBC)",
+    "max_grams": 5.0,
+    "legal_article": "Artículo 299, Código Penal",
+    "notes": "Para consumo personal inmediato.",
+    "is_punishable_below_limit": false,
+    "source_id": "cp_art299"
+  },
+  {
+    "id": "cocaine",
+    "substance": "Clorhidrato de cocaína",
+    "max_grams": 2.0,
+    "legal_article": "Artículo 299, Código Penal",
+    "notes": "Para consumo personal inmediato.",
+    "is_punishable_below_limit": false,
+    "source_id": "cp_art299"
+  },
+  {
+    "id": "opium_latex",
+    "substance": "Látex de opio",
+    "max_grams": 1.0,
+    "legal_article": "Artículo 299, Código Penal",
+    "notes": "Para consumo personal inmediato.",
+    "is_punishable_below_limit": false,
+    "source_id": "cp_art299"
+  },
+  {
+    "id": "opium_derivatives",
+    "substance": "Derivados del opio",
+    "max_grams": 0.2,
+    "legal_article": "Artículo 299, Código Penal",
+    "notes": "200 miligramos. Para consumo personal inmediato.",
+    "is_punishable_below_limit": false,
+    "source_id": "cp_art299"
+  },
+  {
+    "id": "ecstasy",
+    "substance": "Éxtasis (MDMA)",
+    "max_grams": 0.25,
+    "legal_article": "Artículo 299, Código Penal",
+    "notes": "250 miligramos. Para consumo personal inmediato.",
+    "is_punishable_below_limit": false,
+    "source_id": "cp_art299"
+  }
+]

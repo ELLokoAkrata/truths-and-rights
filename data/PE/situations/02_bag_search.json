@@ -1,0 +1,43 @@
+[
+  {
+    "id": "police_bag_search",
+    "category": "registro",
+    "title": "Quieren revisar mi mochila o cartera",
+    "description": "La policía quiere registrar tu mochila, cartera, bolso u otras pertenencias. Necesitan fundadas razones vinculadas a un delito.",
+    "keywords": ["mochila", "cartera", "bolso", "revisar", "registro", "pertenencias", "maleta", "bolsa", "cosas"],
+    "natural_queries": [
+      "me quieren revisar la mochila",
+      "quieren registrar mi cartera",
+      "me piden abrir la mochila",
+      "quieren ver mis cosas",
+      "me quieren revisar el bolso",
+      "me piden que les muestre lo que tengo"
+    ],
+    "severity": "medium",
+    "icon": "🎒",
+    "parent_situation_id": null,
+    "rights": [
+      {"right_id": "right_no_arbitrary_search", "context": "normal", "applies": true, "notes": "Necesitan fundadas razones de que ocultas bienes de un delito. Un control de identidad NO habilita registro."},
+      {"right_id": "right_voluntary_display", "context": "normal", "applies": true, "notes": "PRIMERO deben pedirte que muestres voluntariamente."},
+      {"right_id": "right_same_sex_search", "context": "normal", "applies": true, "notes": null},
+      {"right_id": "right_know_reason", "context": "normal", "applies": true, "notes": null},
+      {"right_id": "right_police_id", "context": "normal", "applies": true, "notes": null},
+      {"right_id": "right_record_intervention", "context": "normal", "applies": true, "notes": null},
+      {"right_id": "right_dignity", "context": "normal", "applies": true, "notes": null},
+      {"right_id": "right_illegal_evidence_exclusion", "context": "normal", "applies": true, "notes": "Si te registran ilegalmente, lo que encuentren no vale como prueba."},
+      {"right_id": "right_no_arbitrary_search", "context": "estado_emergencia_seguridad", "applies": true, "notes": "Más margen pero no arbitrariamente. Sigue necesitando algún fundamento."},
+      {"right_id": "right_dignity", "context": "estado_emergencia_seguridad", "applies": true, "notes": "NUNCA se suspende."}
+    ],
+    "actions": [
+      {"action_id": "action_stay_calm", "step_order": 1},
+      {"action_id": "action_start_recording", "step_order": 2},
+      {"action_id": "action_request_police_id", "step_order": 3},
+      {"action_id": "action_ask_reason", "step_order": 4},
+      {"action_id": "action_show_voluntarily", "step_order": 5},
+      {"action_id": "action_refuse_bag_search", "step_order": 6},
+      {"action_id": "action_verbal_dissent", "step_order": 7}
+    ],
+    "time_limits": [],
+    "contacts": ["defensoria_pueblo", "fiscalia_turno"]
+  }
+]

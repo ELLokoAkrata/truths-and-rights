@@ -1,0 +1,50 @@
+{
+  "country_code": "PE",
+  "country_name": "Perú",
+  "legal_system": "civil_law",
+  "language": "es",
+  "currency": "PEN",
+  "emergency_number": "105",
+  "police_name": "Policía Nacional del Perú (PNP)",
+  "human_rights_body": "Defensoría del Pueblo",
+  "constitution_year": 1993,
+  "completeness": {
+    "sources": "partial",
+    "situations": "partial",
+    "rights": "partial",
+    "actions": "partial",
+    "contacts": "partial",
+    "myths": "minimal",
+    "force_levels": "partial",
+    "substances": "partial",
+    "review_by_lawyer": false
+  },
+  "active_emergencies": [
+    {
+      "type": "seguridad_ciudadana",
+      "decree": "DS N° 006-2026-PCM",
+      "regions": ["Lima Metropolitana", "Callao"],
+      "start_date": "2026-01-20",
+      "end_date": "2026-02-19",
+      "suspends": ["libertad_personal", "inviolabilidad_domicilio", "libertad_transito", "libertad_reunion"],
+      "includes_curfew": false
+    }
+  ],
+  "key_statistics": {
+    "police_misconduct_reports_jan_feb_2025": 698,
+    "report_frequency": "1 cada 105 minutos",
+    "civilian_deaths_protests_2022_2023": 49,
+    "impunity_rate": "~100%",
+    "source": "Inspectoría General PNP, CIDH, Defensoría del Pueblo"
+  },
+  "official_sources": {
+    "spij": "https://spij.minjus.gob.pe",
+    "el_peruano": "https://diariooficial.elperuano.pe",
+    "tribunal_constitucional": "https://www.tc.gob.pe",
+    "congreso": "https://www.congreso.gob.pe",
+    "defensoria": "https://www.defensoria.gob.pe"
+  },
+  "contributors": [],
+  "last_verified": "2026-02-07",
+  "notes": "Versión inicial basada en investigación exhaustiva del marco legal. Pendiente revisión por abogado."
+}

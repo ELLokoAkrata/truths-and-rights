@@ -1,0 +1,98 @@
+[
+  {
+    "id": "tc_00413_2022",
+    "source_type": "jurisprudencia",
+    "name": "Tribunal Constitucional del Perú",
+    "article": "Exp. 00413-2022-PHC/TC — Control de identidad",
+    "full_text": "La facultad policial de control de identidad no se ejerce de modo abiertamente discrecional, sino sujeta a pautas objetivas de obligatoria observancia. La referencia a actitud sospechosa como habilitante del control de identidad es inaceptable. Lo que corresponde ante la negativa a identificarse es denunciarlo, pero no enmarrocarlo ni conducirlo a la fuerza a la comisaría solo por esa negativa.",
+    "summary": "El TC dijo claro: 'actitud sospechosa' NO es motivo válido para pararte. Y si te niegas a identificarte, pueden denunciarte pero NO esposarte ni llevarte a la fuerza solo por eso.",
+    "publication_date": "2022-01-01",
+    "last_modified": null,
+    "official_url": "https://www.tc.gob.pe/jurisprudencia/",
+    "status": "vigente"
+  },
+  {
+    "id": "tc_00008_2021",
+    "source_type": "jurisprudencia",
+    "name": "Tribunal Constitucional del Perú",
+    "article": "Exp. 00008-2021-PI/TC — Ley de Protección Policial",
+    "full_text": "El TC declaró parcialmente inconstitucional la Ley 31012 y afirmó que el principio de proporcionalidad en el uso de la fuerza sigue plenamente vigente a pesar de su derogación formal. Las funciones de la PNP exigen uso legítimo de la fuerza, pero sujeto a proporcionalidad y razonabilidad.",
+    "summary": "Aunque intentaron quitar la proporcionalidad del uso de fuerza policial, el TC dijo que sigue vigente. La fuerza policial SIEMPRE debe ser proporcional.",
+    "publication_date": "2024-11-01",
+    "last_modified": null,
+    "official_url": "https://www.tc.gob.pe/jurisprudencia/",
+    "status": "vigente"
+  },
+  {
+    "id": "tc_02513_2023",
+    "source_type": "jurisprudencia",
+    "name": "Tribunal Constitucional del Perú",
+    "article": "Exp. 02513-2023-PHC/TC — Caso UNMSM 2025",
+    "full_text": "560 efectivos policiales ingresaron al campus de la UNMSM con una tanqueta, deteniendo masivamente a 192 personas sin presencia del Ministerio Público. El TC declaró FUNDADA la demanda de hábeas corpus, exhortando a respetar la libertad personal y la protesta pacífica, distinguir entre manifestantes pacíficos y violentos, y evitar detenciones masivas sin individualizar conductas.",
+    "summary": "La policía detuvo a 192 personas en la UNMSM sin individualizar delitos. El TC dijo que eso es inconstitucional — no pueden detener en masa, deben identificar conductas individuales.",
+    "publication_date": "2025-01-01",
+    "last_modified": null,
+    "official_url": "https://www.tc.gob.pe/jurisprudencia/",
+    "status": "vigente"
+  },
+  {
+    "id": "tc_03830_2017",
+    "source_type": "jurisprudencia",
+    "name": "Tribunal Constitucional del Perú",
+    "article": "Exp. 03830-2017-PHC/TC — Detención constitucional",
+    "full_text": "La Constitución solo autoriza detención por mandato judicial escrito o flagrancia delictiva. Fuera de estos supuestos, toda detención es inconstitucional.",
+    "summary": "Solo existen DOS formas legales de detenerte: orden judicial o flagrancia. Cualquier otra detención es inconstitucional. Punto.",
+    "publication_date": "2017-01-01",
+    "last_modified": null,
+    "official_url": "https://www.tc.gob.pe/jurisprudencia/",
+    "status": "vigente"
+  },
+  {
+    "id": "tc_00849_2000",
+    "source_type": "jurisprudencia",
+    "name": "Tribunal Constitucional del Perú",
+    "article": "Exp. 849-2000-HC/TC y 433-2000-HC/TC — Conducción compulsiva ilegal",
+    "full_text": "Conducir compulsivamente a una persona sin mandato judicial y sin flagrancia constituye un atentado contra la libertad individual.",
+    "summary": "Llevarte a la comisaría sin orden judicial y sin flagrancia es un atentado contra tu libertad.",
+    "publication_date": "2000-01-01",
+    "last_modified": null,
+    "official_url": "https://www.tc.gob.pe/jurisprudencia/",
+    "status": "vigente"
+  },
+  {
+    "id": "casacion_591_2015",
+    "source_type": "jurisprudencia",
+    "name": "Corte Suprema del Perú",
+    "article": "Casación 591-2015-Huánuco — Registro sin fundamento",
+    "full_text": "Estableció doctrina vinculante sobre la invalidez de registros personales sin fundamento legal adecuado.",
+    "summary": "La Corte Suprema estableció que registrarte sin fundamento legal es inválido. Lo que encuentren en un registro ilegal no vale como prueba.",
+    "publication_date": "2015-01-01",
+    "last_modified": null,
+    "official_url": null,
+    "status": "vigente"
+  },
+  {
+    "id": "juzgado_chupaca_2024",
+    "source_type": "jurisprudencia",
+    "name": "Juzgado de Chupaca, Junín",
+    "article": "Exp. 00323-2024 — Revisión ilegal de celular e IMEI",
+    "full_text": "Declaró ilegal la revisión del celular y del IMEI sin consentimiento ni orden judicial durante un control de identidad.",
+    "summary": "Un juez ya declaró que revisar tu celular y pedir tu IMEI sin orden judicial es ilegal. Incluso durante un control de identidad.",
+    "publication_date": "2024-01-01",
+    "last_modified": null,
+    "official_url": null,
+    "status": "vigente"
+  },
+  {
+    "id": "cidh_azul_rojas",
+    "source_type": "tratado_internacional",
+    "name": "Corte Interamericana de Derechos Humanos",
+    "article": "Caso Azul Rojas Marín vs. Perú",
+    "full_text": "La Corte IDH estableció exigencias específicas para solicitar identificación y conducción a comisaría, incluyendo la obligación de informar el motivo de la intervención.",
+    "summary": "La Corte Interamericana obligó al Perú a que los policías SIEMPRE informen el motivo de la intervención al ciudadano.",
+    "publication_date": "2020-03-12",
+    "last_modified": null,
+    "official_url": "https://www.corteidh.or.cr/",
+    "status": "vigente"
+  }
+]

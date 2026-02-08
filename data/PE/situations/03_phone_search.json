@@ -1,0 +1,43 @@
+[
+  {
+    "id": "police_phone_search",
+    "category": "comunicaciones",
+    "title": "Quieren revisar mi celular o pedir mi IMEI",
+    "description": "La policía te pide desbloquear tu celular, revisar tus mensajes, fotos, o te solicita el código IMEI. Esto es ILEGAL sin orden judicial.",
+    "keywords": ["celular", "telefono", "imei", "codigo", "desbloquear", "mensajes", "whatsapp", "fotos", "revisar", "telefono"],
+    "natural_queries": [
+      "me piden el celular",
+      "quieren revisar mi celular",
+      "me piden el IMEI",
+      "me piden desbloquear el celular",
+      "quieren ver mis mensajes",
+      "me piden la clave del celular",
+      "quieren ver mis fotos",
+      "me piden el código de mi celular"
+    ],
+    "severity": "high",
+    "icon": "📱",
+    "parent_situation_id": null,
+    "rights": [
+      {"right_id": "right_no_cell_search", "context": "normal", "applies": true, "notes": "Necesitan orden judicial motivada. Un juez ya declaró ilegal pedir IMEI sin orden."},
+      {"right_id": "right_no_self_incrimination", "context": "normal", "applies": true, "notes": "No tienes que dar tu código ni desbloquear nada."},
+      {"right_id": "right_record_intervention", "context": "normal", "applies": true, "notes": null},
+      {"right_id": "right_police_id", "context": "normal", "applies": true, "notes": null},
+      {"right_id": "right_know_reason", "context": "normal", "applies": true, "notes": null},
+      {"right_id": "right_dignity", "context": "normal", "applies": true, "notes": null},
+      {"right_id": "right_illegal_evidence_exclusion", "context": "normal", "applies": true, "notes": "Todo lo que saquen de tu celular sin orden judicial es prueba ilícita."},
+      {"right_id": "right_no_cell_search", "context": "estado_emergencia_seguridad", "applies": true, "notes": "Sigue protegido. El secreto de comunicaciones NO se suspende en emergencia."},
+      {"right_id": "right_dignity", "context": "estado_emergencia_seguridad", "applies": true, "notes": "NUNCA se suspende."}
+    ],
+    "actions": [
+      {"action_id": "action_stay_calm", "step_order": 1},
+      {"action_id": "action_start_recording", "step_order": 2},
+      {"action_id": "action_request_police_id", "step_order": 3},
+      {"action_id": "action_refuse_cell_search", "step_order": 4},
+      {"action_id": "action_verbal_dissent", "step_order": 5},
+      {"action_id": "action_call_defensoria", "step_order": 6}
+    ],
+    "time_limits": [],
+    "contacts": ["defensoria_pueblo", "fiscalia_turno"]
+  }
+]

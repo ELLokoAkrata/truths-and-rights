@@ -1,0 +1,86 @@
+[
+  {
+    "id": "dl_1267",
+    "source_type": "decreto_legislativo",
+    "name": "Decreto Legislativo 1267 — Ley de la Policía Nacional (modificado por DL 1604)",
+    "article": "Ley de la PNP — Principios y obligaciones",
+    "full_text": "El poder de policía se ejerce con pleno respeto de los derechos fundamentales y bajo los principios de legalidad, necesidad y proporcionalidad. La policía tiene la obligación de identificarse antes de registrar, detener o usar la fuerza.",
+    "summary": "La policía debe respetar tus derechos y actuar con legalidad, necesidad y proporcionalidad. Tiene la obligación de identificarse antes de cualquier actuación.",
+    "publication_date": "2016-12-18",
+    "last_modified": "2023-01-01",
+    "official_url": "https://spij.minjus.gob.pe",
+    "status": "vigente"
+  },
+  {
+    "id": "dl_1186",
+    "source_type": "decreto_legislativo",
+    "name": "Decreto Legislativo 1186 — Uso de la fuerza por la PNP",
+    "article": "Regulación del uso de la fuerza policial",
+    "full_text": "El uso de la fuerza por parte de la Policía Nacional del Perú se sustenta en los principios de legalidad, necesidad y proporcionalidad. Antes de usar la fuerza, el policía debe: 1) Identificarse como policía, 2) Individualizar a la persona a intervenir, 3) Dar una clara advertencia de su intención de usar la fuerza, con tiempo suficiente para que se atienda. El uso de armas de fuego es excepcional y solo procede cuando medidas menos extremas resulten insuficientes.",
+    "summary": "Antes de usar fuerza, el policía debe identificarse, señalar a quién interviene y advertir. Las armas de fuego son el último recurso. La fuerza que viole esta norma genera responsabilidad penal, administrativa y civil.",
+    "publication_date": "2015-08-16",
+    "last_modified": "2024-11-01",
+    "official_url": "https://spij.minjus.gob.pe",
+    "status": "vigente"
+  },
+  {
+    "id": "ley_32130",
+    "source_type": "ley",
+    "name": "Ley 32130 — Registro audiovisual de intervenciones policiales",
+    "article": "Ley 32130 (octubre 2024)",
+    "full_text": "El intervenido tiene derecho a exigir al policía un registro en audio o video de la intervención policial.",
+    "summary": "Tienes derecho a exigir que la intervención sea grabada en audio o video. También puedes grabar tú mismo — es completamente legal.",
+    "publication_date": "2024-10-01",
+    "last_modified": null,
+    "official_url": null,
+    "status": "vigente"
+  },
+  {
+    "id": "ley_31012",
+    "source_type": "ley",
+    "name": "Ley 31012 — Ley de Protección Policial",
+    "article": "Ley de Protección Policial (parcialmente inconstitucional)",
+    "full_text": "Aunque esta ley derogó formalmente el principio de proporcionalidad del Art. 4.1.c del DL 1186, el TC (Exp. 00008-2021-PI/TC, sentencia noviembre 2024) declaró que el principio de proporcionalidad sigue plenamente vigente como principio constitucional.",
+    "summary": "Intentaron quitar el principio de proporcionalidad al uso de fuerza policial, pero el TC dijo que NO: la proporcionalidad sigue vigente porque es constitucional.",
+    "publication_date": "2019-01-01",
+    "last_modified": "2024-11-01",
+    "official_url": null,
+    "status": "parcialmente_inconstitucional"
+  },
+  {
+    "id": "ley_30714",
+    "source_type": "ley",
+    "name": "Ley 30714 — Régimen Disciplinario de la PNP",
+    "article": "Ley del Régimen Disciplinario Policial",
+    "full_text": "Regula el sistema disciplinario de la PNP incluyendo la Inspectoría General, Inspectorías Descentralizadas, Oficina de Asuntos Internos y el Tribunal de Disciplina Policial. Las denuncias pueden ser anónimas.",
+    "summary": "Puedes denunciar policías anónimamente. El sistema incluye Inspectoría General, Asuntos Internos y un Tribunal de Disciplina. Sanciones van desde amonestación hasta destitución.",
+    "publication_date": "2017-12-29",
+    "last_modified": null,
+    "official_url": "https://spij.minjus.gob.pe",
+    "status": "vigente"
+  },
+  {
+    "id": "rm_952_2018",
+    "source_type": "decreto_legislativo",
+    "name": "Manual de DDHH aplicados a la función policial (RM 952-2018-IN)",
+    "article": "Manual de Derechos Humanos PNP",
+    "full_text": "Manual obligatorio para todo el personal de la PNP. Cubre conceptos fundamentales de DDHH, uso de la fuerza, técnicas de intervención, mantenimiento del orden público. Establece consideraciones especiales para poblaciones vulnerables. Reitera que el control de identidad no puede exceder 4 horas y que la detención solo procede por mandato judicial o flagrancia.",
+    "summary": "Manual obligatorio para toda la policía. Dice cómo deben actuar respetando DDHH. Si no lo cumplen, están violando sus propias reglas.",
+    "publication_date": "2018-12-01",
+    "last_modified": null,
+    "official_url": null,
+    "status": "vigente"
+  },
+  {
+    "id": "ley_31307",
+    "source_type": "ley",
+    "name": "Ley 31307 — Nuevo Código Procesal Constitucional",
+    "article": "Hábeas Corpus",
+    "full_text": "Procede el hábeas corpus ante la acción u omisión que amenace o vulnere la libertad individual o los derechos constitucionales conexos. No requiere firma de abogado. Puede ser interpuesto por cualquier persona. Puede ser verbal.",
+    "summary": "El hábeas corpus es gratis, lo presenta cualquiera, no necesita abogado, puede ser verbal, y se presenta ante cualquier juez del país.",
+    "publication_date": "2021-07-23",
+    "last_modified": null,
+    "official_url": "https://spij.minjus.gob.pe",
+    "status": "vigente"
+  }
+]

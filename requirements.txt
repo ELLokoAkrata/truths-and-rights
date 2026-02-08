@@ -1,0 +1,9 @@
+# Truths and Rights — Python Dependencies
+
+# Core (build y validación)
+# No requiere dependencias externas — usa stdlib de Python 3.8+
+
+# Scraping (opcional, solo para scripts/scrape_official.py)
+requests>=2.28.0
+beautifulsoup4>=4.11.0
+lxml>=4.9.0

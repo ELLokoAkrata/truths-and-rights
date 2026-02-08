@@ -1,0 +1,65 @@
+[
+  {
+    "id": "myth_ddhh_protect_criminals",
+    "myth": "Los derechos humanos protegen a los delincuentes",
+    "reality": "Los derechos humanos protegen el PROCESO JUSTO, no al delincuente.",
+    "explanation": "El mismo sistema que suelta delincuentes por corrupción de fiscales es el que encarcela inocentes por abuso policial. El problema no son los derechos — es la corrupción del sistema que decide a quién se los aplica. Pedir menos derechos no afecta al narco con abogado pagado; le quita protección al ciudadano común. Un proceso justo también significa que el culpable verdadero no se escapa por un tecnicismo de un fiscal corrupto.",
+    "related_source_ids": ["const_art2_inc24f", "const_art2_inc24e"],
+    "category": "derechos_humanos",
+    "display_order": 1
+  },
+  {
+    "id": "myth_emergency_no_rights",
+    "myth": "En estado de emergencia la policía puede hacer lo que quiera",
+    "reality": "El estado de emergencia SOLO suspende 4 derechos específicos. Los demás siguen intactos.",
+    "explanation": "Solo se suspenden: libertad personal, inviolabilidad de domicilio, libertad de tránsito y libertad de reunión. NUNCA se suspenden: dignidad, integridad, prohibición de tortura, presunción de inocencia, debido proceso, derecho a abogado, secreto de comunicaciones, y hábeas corpus. El estado de emergencia no es carta blanca para el abuso.",
+    "related_source_ids": ["const_art137", "const_art200"],
+    "category": "estado_emergencia",
+    "display_order": 2
+  },
+  {
+    "id": "myth_resist_equals_crime",
+    "myth": "Si no obedeces al policía siempre cometes delito",
+    "reality": "Solo es delito desobedecer una orden LEGÍTIMA. Negarte a un registro ilegal NO es desobediencia.",
+    "explanation": "El TC estableció que negarse a identificarse puede dar lugar a denuncia, pero NO a que te esposen ni te lleven a la fuerza solo por eso. Y negarte a que revisen tu mochila o celular sin orden judicial NO es desobediencia porque no existe obligación legal de permitirlo sin fundamento.",
+    "related_source_ids": ["cpp_art210", "tc_00413_2022", "cp_art368"],
+    "category": "poder_policial",
+    "display_order": 3
+  },
+  {
+    "id": "myth_police_always_right",
+    "myth": "La policía siempre tiene la razón y hay que obedecer",
+    "reality": "La policía tiene límites legales claros. El ciudadano tiene derechos que el policía debe respetar.",
+    "explanation": "La Constitución dice que nadie está obligado a hacer lo que la ley no manda. Si un policía te ordena algo que no está en la ley (como desbloquear tu celular sin orden judicial), no estás obligado a obedecer. Incluso los policías de menor rango pueden negarse a cumplir órdenes manifiestamente ilegales de sus superiores.",
+    "related_source_ids": ["const_art2_inc24a", "dl_1186"],
+    "category": "poder_policial",
+    "display_order": 4
+  },
+  {
+    "id": "myth_cannabis_always_illegal",
+    "myth": "Tener marihuana siempre es delito en Perú",
+    "reality": "Tener hasta 8 gramos de marihuana para consumo personal NO es delito.",
+    "explanation": "El Artículo 299 del Código Penal dice explícitamente que la posesión para consumo personal de hasta 8g de marihuana no es punible. No hay delito, no hay flagrancia, no hay base para detención. Lo que sí es delito es la comercialización o poseer cantidades mayores al límite.",
+    "related_source_ids": ["cp_art299"],
+    "category": "drogas",
+    "display_order": 5
+  },
+  {
+    "id": "myth_recording_illegal",
+    "myth": "No puedes grabar a la policía",
+    "reality": "Es COMPLETAMENTE LEGAL grabar a la policía durante una intervención.",
+    "explanation": "La función policial es un acto público. La Ley 32130 expresamente establece que puedes exigir registro audiovisual. El propio Director de Defensa Legal de la PNP lo confirmó. No pueden quitarte el celular, pedir que borres grabaciones, ni arrestarte por grabar. Es tu mejor protección.",
+    "related_source_ids": ["ley_32130"],
+    "category": "poder_policial",
+    "display_order": 6
+  },
+  {
+    "id": "myth_habeas_corpus_complicated",
+    "myth": "El hábeas corpus es un trámite complicado que necesita abogado",
+    "reality": "Lo puede presentar cualquiera, verbalmente, sin abogado, gratis, ante cualquier juez.",
+    "explanation": "El hábeas corpus es la herramienta más accesible del sistema legal peruano. No necesitas abogado, no pagas nada, puede ser verbal (ni siquiera necesitas escribir), lo presenta cualquier persona (no solo el afectado), ante cualquier juez penal del país. Y lo más importante: NO se suspende ni en estado de emergencia.",
+    "related_source_ids": ["const_art200", "ley_31307"],
+    "category": "derechos_humanos",
+    "display_order": 7
+  }
+]

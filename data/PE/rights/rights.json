@@ -1,0 +1,222 @@
+[
+  {
+    "id": "right_dignity",
+    "title": "Trato digno en todo momento",
+    "description": "Nadie puede humillarte, degradarte ni darte trato indigno. Esto incluye quitarte zapatos, meter mano en tus pertenencias de forma vejatoria, insultarte o exhibirte públicamente. NUNCA se suspende.",
+    "legal_basis": "Art. 1 y Art. 2 inc. 1 Constitución",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "dignidad",
+    "display_order": 1,
+    "source_ids": ["const_art1", "const_art2_inc1"]
+  },
+  {
+    "id": "right_know_reason",
+    "title": "Deben decirte el motivo de la intervención",
+    "description": "La policía tiene la obligación legal de informarte por qué te están interviniendo. Si no te dicen el motivo, la intervención puede ser declarada ilegal.",
+    "legal_basis": "Art. 71 CPP + Art. 205 CPP + RM 952-2018-IN + Caso Azul Rojas Marín (CIDH)",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "debido_proceso",
+    "display_order": 2,
+    "source_ids": ["cpp_art71", "cpp_art205", "rm_952_2018", "cidh_azul_rojas"]
+  },
+  {
+    "id": "right_police_id",
+    "title": "El policía debe identificarse",
+    "description": "Tienes derecho a exigir nombre, grado, número de placa o CIP, y dependencia del policía que te interviene. Incluso personal encubierto debe hacerlo.",
+    "legal_basis": "DL 1267 + Ley 32130",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "debido_proceso",
+    "display_order": 3,
+    "source_ids": ["dl_1267", "ley_32130"]
+  },
+  {
+    "id": "right_record_intervention",
+    "title": "Puedes grabar toda la intervención",
+    "description": "Es completamente legal grabar a la policía durante una intervención. No pueden quitarte el celular, pedir que borres la grabación, arrestarte por grabar, ni obligarte a dejar de filmar. La función policial es un acto público.",
+    "legal_basis": "Ley 32130 + Art. 2 incisos 4 y 5 Constitución",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "debido_proceso",
+    "display_order": 4,
+    "source_ids": ["ley_32130"]
+  },
+  {
+    "id": "right_no_cell_search",
+    "title": "No pueden revisar tu celular sin orden judicial",
+    "description": "Tu celular está protegido por el derecho a la intimidad y el secreto de comunicaciones. Necesitan una orden judicial motivada. Pedir tu IMEI o que desbloquees tu celular sin orden judicial es ilegal. Tu negativa NO es desobediencia.",
+    "legal_basis": "Art. 2 inc. 7 y 10 Constitución + Exp. 00323-2024 Juzgado Chupaca",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "comunicaciones",
+    "display_order": 5,
+    "source_ids": ["const_art2_inc10", "const_art2_inc7", "juzgado_chupaca_2024"]
+  },
+  {
+    "id": "right_no_arbitrary_search",
+    "title": "No pueden registrarte sin fundadas razones",
+    "description": "Para registrar tus pertenencias necesitan fundadas razones de que ocultas bienes de un delito. Un simple control de identidad NO habilita registro. Deben invitarte primero a mostrar voluntariamente. Tu negativa a un registro arbitrario NO es desobediencia.",
+    "legal_basis": "Art. 210 CPP + Casación 591-2015-Huánuco",
+    "is_absolute": false,
+    "never_suspended": false,
+    "category": "propiedad",
+    "display_order": 6,
+    "source_ids": ["cpp_art210", "casacion_591_2015"]
+  },
+  {
+    "id": "right_voluntary_display",
+    "title": "Deben invitarte primero a mostrar voluntariamente",
+    "description": "Antes de registrarte, el policía DEBE pedirte que muestres o entregues voluntariamente lo buscado. No puede ir directo a meterte la mano en los bolsillos o la mochila.",
+    "legal_basis": "Art. 210 CPP",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "debido_proceso",
+    "display_order": 7,
+    "source_ids": ["cpp_art210"]
+  },
+  {
+    "id": "right_same_sex_search",
+    "title": "El registro debe ser por persona del mismo sexo",
+    "description": "Si te registran, debe hacerlo preferentemente una persona de tu mismo sexo, respetando tu dignidad y pudor.",
+    "legal_basis": "Art. 210 CPP",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "dignidad",
+    "display_order": 8,
+    "source_ids": ["cpp_art210"]
+  },
+  {
+    "id": "right_max_4_hours",
+    "title": "Retención máxima de 4 horas (nacionales)",
+    "description": "Si te retienen para identificación, el máximo es 4 horas. Si te identificas antes, deben dejarte ir inmediatamente. No pueden meterte a celdas ni tenerte con detenidos.",
+    "legal_basis": "Art. 205.4 CPP + Exp. 00413-2022-PHC/TC",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "libertad",
+    "display_order": 9,
+    "source_ids": ["cpp_art205_4", "tc_00413_2022"]
+  },
+  {
+    "id": "right_no_cells_retention",
+    "title": "En retención NO pueden meterte a celdas",
+    "description": "Si estás retenido por identificación (no detenido), no pueden ingresarte a celdas ni calabozos, ni mantenerte en contacto con personas detenidas.",
+    "legal_basis": "Art. 205.4 CPP + Exp. 00413-2022-PHC/TC",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "libertad",
+    "display_order": 10,
+    "source_ids": ["cpp_art205_4", "tc_00413_2022"]
+  },
+  {
+    "id": "right_contact_family",
+    "title": "Derecho a comunicarte con un familiar",
+    "description": "Tanto en retención como en detención, tienes derecho a comunicarte con un familiar. La policía debe brindarte servicio telefónico.",
+    "legal_basis": "Art. 205.4 CPP + Art. 71 CPP + Art. 139 inc. 14 Constitución",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "debido_proceso",
+    "display_order": 11,
+    "source_ids": ["cpp_art205_4", "cpp_art71", "const_art139_inc14"]
+  },
+  {
+    "id": "right_lawyer",
+    "title": "Derecho a un abogado desde el primer momento",
+    "description": "Desde que eres citado o detenido tienes derecho a un abogado de tu elección. Nadie puede interrogarte sin abogado presente.",
+    "legal_basis": "Art. 139 inc. 14 Constitución + Art. 71 CPP",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "debido_proceso",
+    "display_order": 12,
+    "source_ids": ["const_art139_inc14", "cpp_art71"]
+  },
+  {
+    "id": "right_no_self_incrimination",
+    "title": "No estás obligado a declarar contra ti mismo",
+    "description": "No tienes que dar información que te perjudique. Esto incluye desbloquear tu celular, dar contraseñas, o revelar información personal. Tu silencio no puede usarse en tu contra.",
+    "legal_basis": "Art. 2 inc. 24 lit. h Constitución + Art. 71 CPP",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "debido_proceso",
+    "display_order": 13,
+    "source_ids": ["const_art2_inc24h", "cpp_art71"]
+  },
+  {
+    "id": "right_legal_possession",
+    "title": "Posesión de cannabis menor a 8g NO es delito",
+    "description": "El Código Penal dice que tener hasta 8g de marihuana para consumo personal no es punible. No hay delito, no hay flagrancia, no hay base para detención.",
+    "legal_basis": "Art. 299 Código Penal",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "libertad",
+    "display_order": 14,
+    "source_ids": ["cp_art299"]
+  },
+  {
+    "id": "right_habeas_corpus",
+    "title": "Hábeas corpus: tu herramienta más poderosa",
+    "description": "Cualquier persona puede presentarlo (no solo tú), no necesita abogado, puede ser verbal o escrito, ante cualquier juez penal del país, es gratuito, y NO se suspende ni en estado de emergencia.",
+    "legal_basis": "Art. 200 Constitución + Ley 31307",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "libertad",
+    "display_order": 15,
+    "source_ids": ["const_art200", "ley_31307"]
+  },
+  {
+    "id": "right_no_torture",
+    "title": "Prohibición absoluta de tortura y tratos crueles",
+    "description": "Nadie puede torturarte ni darte tratos inhumanos o humillantes. Las declaraciones obtenidas con violencia son nulas. Cualquier persona puede pedir tu examen médico. NUNCA se suspende.",
+    "legal_basis": "Art. 2 inc. 24 lit. h Constitución",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "integridad",
+    "display_order": 16,
+    "source_ids": ["const_art2_inc24h"]
+  },
+  {
+    "id": "right_presumption_innocence",
+    "title": "Presunción de inocencia",
+    "description": "Eres inocente hasta que un juez declare lo contrario. El policía debe tratarte como inocente durante toda la intervención. NUNCA se suspende.",
+    "legal_basis": "Art. 2 inc. 24 lit. e Constitución",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "debido_proceso",
+    "display_order": 17,
+    "source_ids": ["const_art2_inc24e"]
+  },
+  {
+    "id": "right_home_inviolability",
+    "title": "Inviolabilidad del domicilio",
+    "description": "La policía solo puede entrar a tu casa con: 1) tu autorización, 2) orden judicial, o 3) flagrante delito. SE PUEDE RESTRINGIR en estado de emergencia.",
+    "legal_basis": "Art. 2 inc. 9 Constitución",
+    "is_absolute": false,
+    "never_suspended": false,
+    "category": "propiedad",
+    "display_order": 18,
+    "source_ids": ["const_art2_inc9"]
+  },
+  {
+    "id": "right_proportional_force",
+    "title": "La fuerza policial debe ser proporcional",
+    "description": "La respuesta del policía debe ser proporcional a tu conducta. Si solo hablas, solo pueden hablar. Si no cooperas pasivamente, solo pueden negociar. La escalada de fuerza sin justificación es ilegal.",
+    "legal_basis": "DL 1186 + Exp. 00008-2021-PI/TC",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "integridad",
+    "display_order": 19,
+    "source_ids": ["dl_1186", "tc_00008_2021"]
+  },
+  {
+    "id": "right_illegal_evidence_exclusion",
+    "title": "Pruebas obtenidas ilegalmente son nulas",
+    "description": "Todo lo que encuentren en un registro ilegal, revisión ilegal de celular, o detención arbitraria NO vale como prueba en un juicio.",
+    "legal_basis": "Art. 2 inc. 10 Constitución + Art. 159.2 CPP",
+    "is_absolute": true,
+    "never_suspended": true,
+    "category": "debido_proceso",
+    "display_order": 20,
+    "source_ids": ["const_art2_inc10", "cpp_art159_2"]
+  }
+]

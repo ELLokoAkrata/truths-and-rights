@@ -1,0 +1,189 @@
+[
+  {
+    "id": "action_stay_calm",
+    "action_type": "hacer",
+    "title": "Mantén la calma",
+    "description": "No te resistas físicamente. Tu mejor arma es la evidencia, no la fuerza. La resistencia física les da excusa legal para escalar.",
+    "script": null,
+    "priority": 1,
+    "is_recommended": true,
+    "warning": "Ponerte agresivo es comprensible pero contraproducente. Cada palabra o gesto agresivo es una excusa para ellos.",
+    "legal_basis_summary": null
+  },
+  {
+    "id": "action_start_recording",
+    "action_type": "grabar",
+    "title": "Activa grabación inmediatamente",
+    "description": "Empieza a grabar audio o video. Es tu derecho legal. Si puedes, activa el botón de pánico de la app para grabar en segundo plano y alertar a tus contactos.",
+    "script": null,
+    "priority": 2,
+    "is_recommended": true,
+    "warning": "Si te dicen que pares de grabar, responde con el script sugerido. No pares.",
+    "legal_basis_summary": "Ley 32130 + Art. 2 incisos 4 y 5 Constitución"
+  },
+  {
+    "id": "action_request_police_id",
+    "action_type": "decir",
+    "title": "Exige identificación del policía",
+    "description": "Pide nombre, grado, número de placa o CIP, y comisaría de asignación. Es tu derecho y su obligación.",
+    "script": "Oficial, ¿podría proporcionarme su nombre, grado y dependencia policial, por favor?",
+    "priority": 3,
+    "is_recommended": true,
+    "warning": null,
+    "legal_basis_summary": "DL 1267 + Ley 32130"
+  },
+  {
+    "id": "action_ask_reason",
+    "action_type": "decir",
+    "title": "Pregunta el motivo de la intervención",
+    "description": "Tienes derecho a saber por qué te están interviniendo. Pregúntalo con calma y claridad para que quede grabado.",
+    "script": "¿Podría informarme el motivo legal de esta intervención?",
+    "priority": 4,
+    "is_recommended": true,
+    "warning": null,
+    "legal_basis_summary": "Art. 71 CPP + Art. 205 CPP"
+  },
+  {
+    "id": "action_show_id",
+    "action_type": "hacer",
+    "title": "Identifícate con cualquier documento válido",
+    "description": "Puedes usar DNI, licencia de conducir, pasaporte o partida de nacimiento. Si te identificas correctamente, deben dejarte ir.",
+    "script": null,
+    "priority": 5,
+    "is_recommended": true,
+    "warning": "Es recomendable colaborar con la identificación. Si te niegas, pueden denunciarte, aunque NO esposarte ni llevarte a la fuerza solo por eso.",
+    "legal_basis_summary": "Art. 205 CPP + Exp. 00413-2022-PHC/TC"
+  },
+  {
+    "id": "action_show_voluntarily",
+    "action_type": "hacer",
+    "title": "Muestra voluntariamente lo que tienes (si quieres)",
+    "description": "Antes de que te registren, puedes mostrar voluntariamente lo que tienes. NO estás obligado, pero puede cerrar la intervención más rápido.",
+    "script": "Puedo mostrarle voluntariamente lo que tengo. Procedo a hacerlo por mi propia voluntad.",
+    "priority": 6,
+    "is_recommended": true,
+    "warning": "Esto es OPCIONAL. No estás obligado. Pero mostrar poco cierra el tema más rápido que negarte.",
+    "legal_basis_summary": "Art. 210 CPP"
+  },
+  {
+    "id": "action_refuse_bag_search",
+    "action_type": "decir",
+    "title": "Niégate al registro arbitrario de pertenencias",
+    "description": "Si no hay fundadas razones de un delito, puedes negarte al registro de tu mochila o cartera. Tu negativa NO es desobediencia.",
+    "script": "Respetuosamente, no consiento este registro. El artículo 210 del Código Procesal Penal exige fundadas razones vinculadas a un delito para proceder al registro personal.",
+    "priority": 7,
+    "is_recommended": true,
+    "warning": "Es probable que insistan. Mantén tu posición con calma y que quede grabado.",
+    "legal_basis_summary": "Art. 210 CPP + Casación 591-2015-Huánuco"
+  },
+  {
+    "id": "action_refuse_cell_search",
+    "action_type": "decir",
+    "title": "Niégate a entregar o desbloquear tu celular",
+    "description": "No tienes obligación legal de entregar tu celular, desbloquearlo ni dar tu IMEI sin orden judicial. Tu negativa NO es desobediencia.",
+    "script": "Respetuosamente me niego a entregar mi celular. El artículo 2 inciso 10 de la Constitución protege mis comunicaciones. Se requiere orden judicial motivada para revisarlo.",
+    "priority": 8,
+    "is_recommended": true,
+    "warning": "Es probable que insistan o amenacen. Mantén tu posición con calma. Que quede grabado.",
+    "legal_basis_summary": "Art. 2 inc. 10 Constitución + Exp. 00323-2024"
+  },
+  {
+    "id": "action_state_legal_possession",
+    "action_type": "decir",
+    "title": "Informa que la cantidad es legal",
+    "description": "Si tienes menos de 8g de cannabis, puedes informar que es para consumo personal y está dentro del límite legal.",
+    "script": "Esta cantidad es para consumo personal. Es menor a 8 gramos, lo cual no es punible según el Artículo 299 del Código Penal.",
+    "priority": 9,
+    "is_recommended": true,
+    "warning": "Di esto solo si efectivamente tienes menos de 8g. No mientas sobre la cantidad.",
+    "legal_basis_summary": "Art. 299 Código Penal"
+  },
+  {
+    "id": "action_verbal_dissent",
+    "action_type": "decir",
+    "title": "Deja constancia verbal de disconformidad",
+    "description": "Si te llevan a pesar de todo, di en voz alta (y grabada) que no consientes la intervención. Esto tiene peso legal después.",
+    "script": "Dejo constancia de que no consiento esta detención. Considero que es ilegal ya que no existe flagrancia delictiva ni orden judicial. Solicito se me informe el motivo y se respeten mis derechos conforme al artículo 71 del Código Procesal Penal.",
+    "priority": 10,
+    "is_recommended": true,
+    "warning": "No te resistas físicamente. Pero que quede grabado que no estás de acuerdo.",
+    "legal_basis_summary": "Art. 71 CPP"
+  },
+  {
+    "id": "action_call_defensoria",
+    "action_type": "llamar",
+    "title": "Llama a la Defensoría del Pueblo",
+    "description": "Si la situación escala, llama a la línea gratuita de la Defensoría: 0800-15-170. Funciona 24/7 y pueden intervenir. También por WhatsApp: +51 947 951 412.",
+    "script": null,
+    "priority": 11,
+    "is_recommended": true,
+    "warning": null,
+    "legal_basis_summary": "Art. 162 Constitución"
+  },
+  {
+    "id": "action_request_habeas_corpus",
+    "action_type": "hacer",
+    "title": "Solicita hábeas corpus",
+    "description": "Cualquier persona puede presentar hábeas corpus por ti — tu familia, amigos, pareja. No necesita abogado, puede ser verbal, ante cualquier juez. Es gratis y funciona incluso en estado de emergencia.",
+    "script": null,
+    "priority": 12,
+    "is_recommended": true,
+    "warning": "Si estás detenido, pide a un familiar o amigo que lo presente por ti.",
+    "legal_basis_summary": "Art. 200 Constitución + Ley 31307"
+  },
+  {
+    "id": "action_demand_recording",
+    "action_type": "decir",
+    "title": "Exige registro audiovisual de la intervención",
+    "description": "La Ley 32130 te da derecho a exigir que el policía registre la intervención en audio o video.",
+    "script": "Conforme a la Ley 32130, exijo que esta intervención sea registrada en audio y video.",
+    "priority": 13,
+    "is_recommended": true,
+    "warning": "Si te dicen que dejes de grabar TÚ, recuerda que es tu derecho constitucional.",
+    "legal_basis_summary": "Ley 32130"
+  },
+  {
+    "id": "action_document_after",
+    "action_type": "documentar",
+    "title": "Documenta todo después de la intervención",
+    "description": "Anota: nombre del policía, grado, placa, comisaría, fecha, hora, lugar exacto, secuencia de hechos, testigos. Guarda grabaciones en la nube sin editar.",
+    "script": null,
+    "priority": 14,
+    "is_recommended": true,
+    "warning": "No edites las grabaciones. Guarda copias originales en la nube.",
+    "legal_basis_summary": null
+  },
+  {
+    "id": "action_request_medical_exam",
+    "action_type": "hacer",
+    "title": "Solicita examen médico si hubo agresión",
+    "description": "Si te agredieron físicamente, solicita un certificado médico legal. Cualquier persona puede pedirlo por ti.",
+    "script": "Solicito un examen médico legal conforme al artículo 2, inciso 24, literal h de la Constitución.",
+    "priority": 15,
+    "is_recommended": true,
+    "warning": null,
+    "legal_basis_summary": "Art. 2 inc. 24 lit. h Constitución"
+  },
+  {
+    "id": "action_no_physical_resistance",
+    "action_type": "no_hacer",
+    "title": "No opongas resistencia física",
+    "description": "Aunque la intervención sea ilegal, no te resistas físicamente. Eso les da excusa para escalar la fuerza y te convierte de víctima a imputado por resistencia.",
+    "script": null,
+    "priority": 16,
+    "is_recommended": true,
+    "warning": "Es injusto, pero tu mejor defensa en el momento es la evidencia (grabación + testigos), no la fuerza.",
+    "legal_basis_summary": null
+  },
+  {
+    "id": "action_deny_home_entry",
+    "action_type": "decir",
+    "title": "Niégate al ingreso domiciliario sin orden",
+    "description": "Si no hay estado de emergencia, la policía necesita tu permiso o una orden judicial para entrar a tu casa. Puedes negarte.",
+    "script": "No autorizo el ingreso a mi domicilio. El artículo 2, inciso 9 de la Constitución protege la inviolabilidad de mi domicilio. Se requiere mi autorización o una orden judicial.",
+    "priority": 17,
+    "is_recommended": true,
+    "warning": "En estado de emergencia este derecho puede estar suspendido. Verifica el contexto.",
+    "legal_basis_summary": "Art. 2 inc. 9 Constitución"
+  }
+]

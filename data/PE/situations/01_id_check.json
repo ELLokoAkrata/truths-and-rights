@@ -1,0 +1,60 @@
+[
+  {
+    "id": "police_id_check",
+    "category": "identificacion",
+    "title": "La policía me pide DNI o documentos",
+    "description": "Un policía te para en la calle y te pide que te identifiques. Puede solicitar identificación sin orden judicial, pero no tiene discrecionalidad absoluta.",
+    "keywords": ["dni", "identidad", "documento", "identificacion", "papeles", "parar", "pedir", "documentos"],
+    "natural_queries": [
+      "me piden DNI",
+      "me piden documentos",
+      "me piden identificarme",
+      "me paran en la calle",
+      "me piden papeles",
+      "la policía me para sin motivo"
+    ],
+    "severity": "medium",
+    "icon": "🪪",
+    "parent_situation_id": null,
+    "rights": [
+      {"right_id": "right_know_reason", "context": "normal", "applies": true, "notes": "Debe haber motivo: prevenir delito u obtener información sobre un hecho punible. 'Actitud sospechosa' NO es motivo válido."},
+      {"right_id": "right_police_id", "context": "normal", "applies": true, "notes": "Tienes derecho recíproco a exigir su identificación."},
+      {"right_id": "right_record_intervention", "context": "normal", "applies": true, "notes": null},
+      {"right_id": "right_dignity", "context": "normal", "applies": true, "notes": null},
+      {"right_id": "right_max_4_hours", "context": "normal", "applies": true, "notes": "Solo si no puedes identificarte y te llevan a comisaría."},
+      {"right_id": "right_no_cells_retention", "context": "normal", "applies": true, "notes": "Si te llevan por identificación, NO pueden meterte a celdas."},
+      {"right_id": "right_contact_family", "context": "normal", "applies": true, "notes": null},
+      {"right_id": "right_know_reason", "context": "estado_emergencia_seguridad", "applies": true, "notes": "Aún en emergencia deben informar el motivo."},
+      {"right_id": "right_dignity", "context": "estado_emergencia_seguridad", "applies": true, "notes": "NUNCA se suspende."}
+    ],
+    "actions": [
+      {"action_id": "action_stay_calm", "step_order": 1},
+      {"action_id": "action_start_recording", "step_order": 2},
+      {"action_id": "action_request_police_id", "step_order": 3},
+      {"action_id": "action_ask_reason", "step_order": 4},
+      {"action_id": "action_show_id", "step_order": 5},
+      {"action_id": "action_demand_recording", "step_order": 6}
+    ],
+    "time_limits": [
+      {
+        "id": "limit_id_check_national",
+        "description": "Retención por identificación (nacionales)",
+        "max_hours": 4.0,
+        "max_hours_emergency": 4.0,
+        "applies_to": "nacional",
+        "after_expiry_action": "Deben soltarte. Si pasan las 4 horas, es detención arbitraria y procede hábeas corpus.",
+        "source_id": "cpp_art205_4"
+      },
+      {
+        "id": "limit_id_check_foreign",
+        "description": "Retención por identificación (extranjeros)",
+        "max_hours": 12.0,
+        "max_hours_emergency": 12.0,
+        "applies_to": "extranjero",
+        "after_expiry_action": "Deben soltarte o conseguir orden judicial.",
+        "source_id": "cpp_art205_4"
+      }
+    ],
+    "contacts": ["defensoria_pueblo", "fiscalia_turno"]
+  }
+]

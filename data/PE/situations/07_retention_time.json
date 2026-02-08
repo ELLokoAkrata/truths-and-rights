@@ -1,0 +1,101 @@
+[
+  {
+    "id": "retention_time",
+    "category": "detencion",
+    "title": "¿Cuánto tiempo pueden retenerme?",
+    "description": "Te están reteniendo y quieres saber cuánto tiempo es legal. Los plazos varían según el tipo de retención.",
+    "keywords": ["tiempo", "horas", "plazo", "retener", "retencion", "soltar", "liberar", "cuanto tiempo", "cuando salen"],
+    "natural_queries": [
+      "cuánto tiempo pueden retenerme",
+      "cuántas horas pueden tenerme",
+      "cuándo me sueltan",
+      "llevan muchas horas y no me sueltan",
+      "me tienen más de 4 horas",
+      "cuánto dura la detención"
+    ],
+    "severity": "high",
+    "icon": "⏱️",
+    "parent_situation_id": null,
+    "rights": [
+      {"right_id": "right_max_4_hours", "context": "normal", "applies": true, "notes": "Para retención por identificación. Si te identificas antes, deben dejarte ir inmediatamente."},
+      {"right_id": "right_habeas_corpus", "context": "normal", "applies": true, "notes": "Si exceden el plazo, procede hábeas corpus inmediato."},
+      {"right_id": "right_contact_family", "context": "normal", "applies": true, "notes": null},
+      {"right_id": "right_lawyer", "context": "normal", "applies": true, "notes": "Si pasas de retención a detención, tienes derecho a abogado."},
+      {"right_id": "right_dignity", "context": "normal", "applies": true, "notes": null},
+      {"right_id": "right_habeas_corpus", "context": "estado_emergencia_seguridad", "applies": true, "notes": "NO se suspende ni en emergencia."}
+    ],
+    "actions": [
+      {"action_id": "action_start_recording", "step_order": 1},
+      {"action_id": "action_ask_reason", "step_order": 2},
+      {"action_id": "action_verbal_dissent", "step_order": 3},
+      {"action_id": "action_call_defensoria", "step_order": 4},
+      {"action_id": "action_request_habeas_corpus", "step_order": 5}
+    ],
+    "time_limits": [
+      {
+        "id": "limit_retention_id",
+        "description": "Retención por identificación (nacionales)",
+        "max_hours": 4.0,
+        "max_hours_emergency": 4.0,
+        "applies_to": "nacional",
+        "after_expiry_action": "Deben soltarte. Si no lo hacen, es detención arbitraria.",
+        "source_id": "cpp_art205_4"
+      },
+      {
+        "id": "limit_retention_id_foreign",
+        "description": "Retención por identificación (extranjeros)",
+        "max_hours": 12.0,
+        "max_hours_emergency": 12.0,
+        "applies_to": "extranjero",
+        "after_expiry_action": "Deben soltarte o conseguir orden judicial.",
+        "source_id": "cpp_art205_4"
+      },
+      {
+        "id": "limit_retention_pesquisa",
+        "description": "Retención durante pesquisa",
+        "max_hours": 4.0,
+        "max_hours_emergency": 4.0,
+        "applies_to": "todos",
+        "after_expiry_action": "Se requiere orden judicial para extender.",
+        "source_id": "cpp_art209"
+      },
+      {
+        "id": "limit_detention_flagrancia",
+        "description": "Detención en flagrancia",
+        "max_hours": 48.0,
+        "max_hours_emergency": 48.0,
+        "applies_to": "todos",
+        "after_expiry_action": "Deben ponerte a disposición del juez.",
+        "source_id": "const_art2_inc24f"
+      },
+      {
+        "id": "limit_detention_preliminary",
+        "description": "Detención preliminar judicial",
+        "max_hours": 72.0,
+        "max_hours_emergency": 168.0,
+        "applies_to": "todos",
+        "after_expiry_action": "Hasta 7 días en casos complejos.",
+        "source_id": "cpp_art205_4"
+      },
+      {
+        "id": "limit_detention_organized_crime",
+        "description": "Delitos de organizaciones criminales",
+        "max_hours": 240.0,
+        "max_hours_emergency": 240.0,
+        "applies_to": "todos",
+        "after_expiry_action": "10 días máximo.",
+        "source_id": "cpp_art205_4"
+      },
+      {
+        "id": "limit_detention_terrorism",
+        "description": "Terrorismo, espionaje, TID",
+        "max_hours": 360.0,
+        "max_hours_emergency": 360.0,
+        "applies_to": "todos",
+        "after_expiry_action": "15 días naturales máximo.",
+        "source_id": "const_art2_inc24f"
+      }
+    ],
+    "contacts": ["defensoria_pueblo", "fiscalia_turno", "idl"]
+  }
+]

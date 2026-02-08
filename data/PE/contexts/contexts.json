@@ -1,0 +1,28 @@
+[
+  {
+    "id": "normal",
+    "name": "Situación normal",
+    "description": "Sin estado de emergencia ni restricciones especiales. Todos los derechos constitucionales están vigentes.",
+    "context_type": "normal",
+    "affects_rights": [],
+    "is_currently_active": true,
+    "active_regions": [],
+    "decree_number": null,
+    "start_date": null,
+    "end_date": null,
+    "source_id": null
+  },
+  {
+    "id": "estado_emergencia_seguridad",
+    "name": "Estado de emergencia por seguridad ciudadana",
+    "description": "Declarado por incremento del crimen organizado. La PNP mantiene control del orden interno con apoyo de Fuerzas Armadas. Suspende 4 derechos específicos pero NO suspende: dignidad, integridad, debido proceso, comunicaciones, hábeas corpus.",
+    "context_type": "estado_emergencia",
+    "affects_rights": ["right_home_inviolability"],
+    "is_currently_active": true,
+    "active_regions": ["Lima Metropolitana", "Callao"],
+    "decree_number": "DS N° 006-2026-PCM",
+    "start_date": "2026-01-20",
+    "end_date": "2026-02-19",
+    "source_id": "const_art137"
+  }
+]

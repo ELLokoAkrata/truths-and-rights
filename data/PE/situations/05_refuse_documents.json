@@ -1,0 +1,33 @@
+[
+  {
+    "id": "refuse_show_documents",
+    "category": "identificacion",
+    "title": "¿Qué pasa si me niego a mostrar documentos?",
+    "description": "Te niegas a identificarte ante un requerimiento policial. Puede acarrear denuncia pero NO esposamiento ni conducción forzada.",
+    "keywords": ["negar", "negarse", "no quiero", "no mostrar", "no identificar", "desobediencia", "resistencia"],
+    "natural_queries": [
+      "me niego a mostrar documentos",
+      "no quiero dar mi DNI",
+      "qué pasa si no me identifico",
+      "me pueden detener por no dar DNI",
+      "es delito no identificarme"
+    ],
+    "severity": "medium",
+    "icon": "✋",
+    "parent_situation_id": "police_id_check",
+    "rights": [
+      {"right_id": "right_dignity", "context": "normal", "applies": true, "notes": null},
+      {"right_id": "right_record_intervention", "context": "normal", "applies": true, "notes": null},
+      {"right_id": "right_no_arbitrary_search", "context": "normal", "applies": true, "notes": "Negarte a que revisen mochila o celular NO es desobediencia."},
+      {"right_id": "right_no_cell_search", "context": "normal", "applies": true, "notes": "Negarte a entregar celular NO es desobediencia."}
+    ],
+    "actions": [
+      {"action_id": "action_stay_calm", "step_order": 1},
+      {"action_id": "action_start_recording", "step_order": 2},
+      {"action_id": "action_show_id", "step_order": 3},
+      {"action_id": "action_verbal_dissent", "step_order": 4}
+    ],
+    "time_limits": [],
+    "contacts": ["defensoria_pueblo"]
+  }
+]
