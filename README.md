@@ -28,13 +28,106 @@ Esta app ataca la **asimetría de conocimiento**: el policía sabe (o cree saber
 
 ---
 
+## Probarlo ahora / Try it now
+
+Solo necesitas Python 3.8+ instalado. No requiere dependencias externas.
+
+### 1. Clonar el repo
+
+```bash
+git clone https://github.com/ELLokoAkrata/truths-and-rights.git
+cd truths-and-rights
+```
+
+### 2. Construir la base de datos
+
+```bash
+python scripts/build_db.py --country PE
+```
+
+Esto genera `build/truths_and_rights_pe.db` (256 KB) a partir de los datos en JSON.
+
+### 3. Usar el CLI
+
+**Consulta directa** — escribe tu situación entre comillas:
+
+```bash
+python scripts/cli.py "me quieren revisar el celular"
+python scripts/cli.py "me encuentran con marihuana"
+python scripts/cli.py "me piden el DNI"
+python scripts/cli.py "puedo grabar al policía"
+python scripts/cli.py "me llevan a la comisaría"
+python scripts/cli.py "cuánto tiempo me pueden retener"
+```
+
+**Modo interactivo** — sin argumentos, y vas escribiendo consultas:
+
+```bash
+python scripts/cli.py
+```
+
+### 4. Qué te muestra
+
+Para cada consulta, el CLI responde con:
+
+- **Situación detectada** — qué escenario legal aplica
+- **Tus derechos** — con base legal y notas por contexto (normal / estado de emergencia)
+- **Qué hacer paso a paso** — acciones ordenadas con textos sugeridos para decirle al policía
+- **Límites de tiempo** — cuántas horas pueden retenerte legalmente
+- **A quién llamar** — teléfonos y WhatsApp de la Defensoría, Fiscalía, ONGs
+
+### 5. Ejemplo de salida
+
+```
+$ python scripts/cli.py "me encuentran con marihuana"
+
+  SITUACION DETECTADA
+  Me encuentran con marihuana
+  Severidad: HIGH
+
+  TUS DERECHOS
+  Posesión de cannabis menor a 8g NO es delito [NUNCA SE SUSPENDE]
+  Base legal: Art. 299 Código Penal
+  Nota: Menos de 8g = NO es delito. No hay flagrancia.
+
+  QUE HACER (PASO A PASO)
+  Paso 1 [HACER] Mantén la calma
+  Paso 2 [GRABAR] Activa grabación inmediatamente
+  Paso 3 [DECIR] Exige identificación del policía
+    "Oficial, ¿podría proporcionarme su nombre, grado y
+     dependencia policial, por favor?"
+  Paso 5 [DECIR] Informa que la cantidad es legal
+    "Esta cantidad es para consumo personal. Es menor a 8 gramos,
+     lo cual no es punible según el Artículo 299 del Código Penal."
+  ...
+
+  A QUIEN LLAMAR
+  Defensoría del Pueblo — 0800-15-170 (24/7, gratuito)
+  WhatsApp: +51 947 951 412
+```
+
+### Situaciones disponibles
+
+| Consulta de ejemplo | Situación |
+|---|---|
+| "me piden el DNI" | Control de identidad |
+| "me quieren revisar la mochila" | Registro de pertenencias |
+| "quieren ver mi celular" | Revisión de celular / IMEI |
+| "me llevan a la comisaría" | Conducción sin detención |
+| "me niego a mostrar documentos" | Negativa a identificarse |
+| "puedo grabar al policía" | Grabación de intervención |
+| "cuánto tiempo me pueden retener" | Límites de retención |
+| "no me dicen por qué me paran" | Sin motivo informado |
+| "me encuentran con marihuana" | Posesión de cannabis |
+
+---
+
 ## Arquitectura
 
 ```
 truths-and-rights/
 ├── schema/                     # Base de datos legal
 │   ├── database_schema.sql     # Estructura de tablas (SQLite)
-│   ├── sample_data.sql         # Datos de ejemplo
 │   └── SCHEMA_DOCS.md          # Documentación del schema
 │
 ├── data/                       # Datos legales por país
@@ -43,12 +136,20 @@ truths-and-rights/
 │       ├── situations/         # Escenarios ciudadanos
 │       ├── rights/             # Derechos por situación
 │       ├── actions/            # Acciones paso a paso
-│       └── contacts/           # Contactos de emergencia
+│       ├── contacts/           # Contactos de emergencia
+│       ├── myths/              # Mitos desmontados
+│       ├── contexts/           # Contextos (normal, emergencia)
+│       └── substances/         # Cantidades legales
 │
 ├── scripts/                    # Scripts de utilidad
-│   ├── build_db.py             # Genera el .db desde los datos
-│   ├── validate_sources.py     # Verifica que las fuentes estén vigentes
+│   ├── build_db.py             # Genera el .db desde los JSON
+│   ├── validate_sources.py     # Valida integridad de datos
+│   ├── search.py               # Buscador de lenguaje natural
+│   ├── cli.py                  # CLI de consulta
 │   └── scrape_official.py      # Scraping de fuentes oficiales
+│
+├── build/                      # Generado (no versionado)
+│   └── truths_and_rights_pe.db # Base de datos SQLite (256 KB)
 │
 ├── docs/                       # Documentación del proyecto
 │   ├── LEGAL_METHODOLOGY.md    # Cómo verificamos la información legal
@@ -66,11 +167,12 @@ truths-and-rights/
 ## Funcionalidades planeadas
 
 ### Fase 1 — MVP: Información (en desarrollo)
-- [x] Schema de base de datos
-- [ ] Base de datos legal completa (Perú)
-- [ ] Buscador por situación en lenguaje natural
-- [ ] Respuestas con derechos, acciones y contactos
-- [ ] Funciona offline (SQLite empaquetado)
+- [x] Schema de base de datos (12 tablas)
+- [x] Base de datos legal de Perú (43 fuentes, 20 derechos, 9 situaciones, 17 acciones)
+- [x] Buscador por situación en lenguaje natural
+- [x] CLI con derechos, acciones, scripts y contactos
+- [x] Funciona offline (SQLite, 256 KB)
+- [ ] App móvil
 
 ### Fase 2 — Protección activa
 - [ ] Botón de pánico (grabación + GPS + alertas)
