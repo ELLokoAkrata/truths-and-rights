@@ -168,6 +168,9 @@ def search_situation(query, db_path=None, limit=3):
         return []
 
     query_norm = normalize(query)
+    if not query_norm:
+        return []
+
     query_tokens = tokens_sin_stopwords(query)
 
     conn = sqlite3.connect(str(db_path))

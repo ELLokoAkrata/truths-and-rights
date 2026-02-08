@@ -273,6 +273,60 @@ def insert_contacts(conn, contacts):
     print(f"  ✓ {count} contactos de emergencia insertados")
 
 
+def insert_contexts(conn, contexts):
+    """Inserta contextos en la base de datos."""
+    count = 0
+    for ctx in contexts:
+        conn.execute("""
+            INSERT OR REPLACE INTO contexts
+            (id, name, description, context_type, affects_rights,
+             is_currently_active, active_regions, decree_number,
+             start_date, end_date, source_id)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (
+            ctx['id'],
+            ctx['name'],
+            ctx['description'],
+            ctx['context_type'],
+            json.dumps(ctx.get('affects_rights', [])),
+            ctx.get('is_currently_active', False),
+            json.dumps(ctx.get('active_regions', [])),
+            ctx.get('decree_number'),
+            ctx.get('start_date'),
+            ctx.get('end_date'),
+            ctx.get('source_id'),
+        ))
+        count += 1
+
+    print(f"  ✓ {count} contextos insertados")
+
+
+def insert_time_limits(conn, situations):
+    """Inserta limites de tiempo desde las situaciones."""
+    count = 0
+    for sit in situations:
+        for tl in sit.get('time_limits', []):
+            conn.execute("""
+                INSERT OR REPLACE INTO time_limits
+                (id, situation_id, description, max_hours, max_hours_emergency,
+                 applies_to, after_expiry_action, source_id)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                tl['id'],
+                sit['id'],
+                tl['description'],
+                tl['max_hours'],
+                tl.get('max_hours_emergency'),
+                tl.get('applies_to', 'todos'),
+                tl['after_expiry_action'],
+                tl['source_id'],
+            ))
+            count += 1
+
+    if count > 0:
+        print(f"  ✓ {count} límites de tiempo insertados")
+
+
 def insert_myths(conn, myths):
     """Inserta mitos para la sección educativa."""
     count = 0
@@ -334,6 +388,10 @@ def build_country(country_code, validate_only=False):
     # Cargar e insertar datos
     print("\nCargando datos...")
     
+    # Contexts
+    contexts = load_json(country_dir / "contexts" / "contexts.json")
+    insert_contexts(conn, contexts)
+
     # Sources (buscar todos los JSON en sources/)
     sources_dir = country_dir / "sources"
     all_sources = []
@@ -341,19 +399,19 @@ def build_country(country_code, validate_only=False):
         for f in sources_dir.glob("*.json"):
             all_sources.extend(load_json(f))
     insert_sources(conn, all_sources, country_code)
-    
+
     # Rights
     rights = load_json(country_dir / "rights" / "rights.json")
     insert_rights(conn, rights)
-    
+
     # Actions
     actions = load_json(country_dir / "actions" / "actions.json")
     insert_actions(conn, actions)
-    
+
     # Contacts
     contacts = load_json(country_dir / "contacts" / "emergency_contacts.json")
     insert_contacts(conn, contacts)
-    
+
     # Situations (buscar todos los JSON en situations/)
     situations_dir = country_dir / "situations"
     all_situations = []
@@ -361,7 +419,10 @@ def build_country(country_code, validate_only=False):
         for f in situations_dir.glob("*.json"):
             all_situations.extend(load_json(f))
     insert_situations(conn, all_situations)
-    
+
+    # Time limits (extraidos de las situaciones)
+    insert_time_limits(conn, all_situations)
+
     # Myths
     myths = load_json(country_dir / "myths" / "myths.json")
     insert_myths(conn, myths)

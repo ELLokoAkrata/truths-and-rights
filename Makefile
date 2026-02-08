@@ -26,8 +26,8 @@ check-emergency: ## Verificar estados de emergencia vigentes
 check-updates: ## Verificar si hay actualizaciones en fuentes
 	python3 scripts/scrape_official.py --check-updates
 
-test: validate build-pe ## Validar + construir (CI/CD)
-	@echo "✓ Todos los tests pasaron"
+test: build-pe ## Correr todos los tests con pytest
+	python -m pytest tests/ -v
 
 clean: ## Limpiar archivos generados
 	rm -rf build/
