@@ -2,6 +2,52 @@
 
 Todos los cambios relevantes de este proyecto se documentan aqui.
 
+## [0.4.0] - 2026-02-08
+
+### App movil Android (Expo)
+
+**Resumen:** Primera version de la app movil para Android. Funciona 100% offline con la base de datos SQLite embebida. Permite buscar situaciones, ver derechos, acciones paso a paso, limites de tiempo y contactos de emergencia.
+
+#### Agregado
+
+- **App movil Expo** en `mobile/` (managed workflow, solo Android, minSdk 26)
+  - Buscador en lenguaje natural (port de `scripts/search.py` a TypeScript)
+  - 9 situaciones con derechos, acciones, limites y contactos
+  - Banner de estado de emergencia con derechos filtrados
+  - Bottom tabs: Inicio, Derechos, Emergencia, Mas
+  - Pantallas: Home, Busqueda, Situacion, Derechos, Emergencia, Mitos, Contactos, About
+  - Scripts copiables al portapapeles (texto sugerido para decir al policia)
+  - Botones directos para llamar y WhatsApp
+  - Badge "NUNCA SE SUSPENDE" en derechos protegidos durante emergencia
+  - Notificacion de actualizacion de datos via `status.json`
+  - Disclaimer legal en todas las pantallas
+
+- **Arquitectura offline-first:**
+  - DB SQLite empaquetada como asset (~256 KB)
+  - `DatabaseProvider` con React Context
+  - Motor de busqueda en memoria (<5ms para 9 situaciones)
+  - Cache de situaciones para busquedas repetidas
+  - Zustand para estado global minimo + AsyncStorage para persistencia
+
+- **Accesibilidad:**
+  - `accessibilityLabel` en todos los elementos interactivos
+  - `minHeight: 48px` en todos los touchables
+  - Paleta de alto contraste (dark theme)
+  - Tipografia legible bajo estres
+
+- **Integracion al monorepo:**
+  - Script `copy-db.js` para copiar DB de `build/` a `assets/db/`
+  - Makefile targets: `mobile-install`, `mobile-start`, `mobile-build-apk`, `mobile-copy-db`, `mobile-test`
+  - Tests unitarios para motor de busqueda y utilidades
+
+#### No incluido (planificado para futuras versiones)
+
+- Boton de panico (Fase 2)
+- Login/registro
+- Backend
+- Descarga automatica de actualizaciones de DB
+- iOS
+
 ## [0.3.0] - 2026-02-08
 
 ### Pipeline automatizado y portal publico

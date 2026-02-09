@@ -1,6 +1,6 @@
 # Truths and Rights — Tareas comunes
 
-.PHONY: build validate scrape check-emergency clean help site serve
+.PHONY: build validate scrape check-emergency clean help site serve mobile-install mobile-start mobile-build-apk mobile-copy-db mobile-test
 
 help: ## Mostrar esta ayuda
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
@@ -39,6 +39,25 @@ clean: ## Limpiar archivos generados
 	rm -rf build/
 	rm -rf site/
 	rm -rf data/PE/sources/raw/
+
+# --- Mobile (Expo) ---
+
+mobile-install: ## Instalar dependencias del proyecto mobile
+	cd mobile && npm install
+
+mobile-copy-db: build-pe ## Copiar DB a assets de la app mobile
+	cd mobile && node scripts/copy-db.js
+
+mobile-start: mobile-copy-db ## Iniciar servidor de desarrollo mobile
+	cd mobile && npx expo start
+
+mobile-build-apk: mobile-copy-db ## Generar APK Android (preview)
+	cd mobile && npx eas build --platform android --profile preview
+
+mobile-test: ## Correr tests de la app mobile
+	cd mobile && npm test
+
+# --- Stats ---
 
 stats: ## Mostrar estadísticas del proyecto
 	@echo "=== Truths and Rights — Stats ==="

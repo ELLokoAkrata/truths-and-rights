@@ -1,0 +1,13 @@
+node_modules/
+.expo/
+dist/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+# Database is copied from build/ via copy-db.js
+assets/db/*.db

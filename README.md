@@ -167,6 +167,38 @@ Los workflows **nunca modifican datos legales automaticamente**. Solo crean Issu
 
 ---
 
+## App movil
+
+La app movil para Android esta en `mobile/`. Funciona 100% offline con la base de datos SQLite embebida.
+
+### Requisitos
+
+- Node.js 18+
+- npm o yarn
+- Android Studio (para emulador) o dispositivo Android 8+ (API 26)
+
+### Desarrollo
+
+```bash
+make mobile-install    # Instalar dependencias
+make mobile-copy-db    # Copiar DB a assets
+make mobile-start      # Iniciar servidor de desarrollo
+```
+
+### Build APK
+
+```bash
+make mobile-build-apk  # Genera APK via EAS Build
+```
+
+### Tests
+
+```bash
+make mobile-test       # Correr tests unitarios
+```
+
+---
+
 ## Arquitectura
 
 ```
@@ -193,6 +225,18 @@ truths-and-rights/
 │   ├── cli.py                  # CLI de consulta
 │   └── scrape_official.py      # Scraping de fuentes oficiales
 │
+├── mobile/                     # App movil (Expo, Android)
+│   ├── App.tsx                 # Entry point
+│   ├── src/                    # Codigo fuente
+│   │   ├── database/           # DB provider, queries, search engine
+│   │   ├── screens/            # 8 pantallas
+│   │   ├── components/         # UI + situation components
+│   │   ├── hooks/              # Custom hooks
+│   │   ├── navigation/         # React Navigation (tabs + stacks)
+│   │   └── store/              # Zustand state
+│   ├── assets/db/              # DB embebida (copiada de build/)
+│   └── __tests__/              # Tests unitarios
+│
 ├── build/                      # Generado (no versionado)
 │   └── truths_and_rights_pe.db # Base de datos SQLite (256 KB)
 │
@@ -211,13 +255,13 @@ truths-and-rights/
 
 ## Funcionalidades planeadas
 
-### Fase 1 — MVP: Información (en desarrollo)
+### Fase 1 — MVP: Información
 - [x] Schema de base de datos (12 tablas)
 - [x] Base de datos legal de Perú (43 fuentes, 20 derechos, 9 situaciones, 17 acciones)
 - [x] Buscador por situación en lenguaje natural
 - [x] CLI con derechos, acciones, scripts y contactos
 - [x] Funciona offline (SQLite, 256 KB)
-- [ ] App móvil
+- [x] App móvil Android (Expo, offline-first)
 
 ### Fase 2 — Protección activa
 - [ ] Botón de pánico (grabación + GPS + alertas)
@@ -258,7 +302,7 @@ Lee [CONTRIBUTING.md](CONTRIBUTING.md) para los detalles.
 
 - **Base de datos:** SQLite (offline-first)
 - **Datos:** SQL + JSON (legibles y editables por humanos)
-- **App móvil:** Por definir (React Native o Flutter)
+- **App móvil:** Expo / React Native (Android, offline-first)
 - **Backend (Fase 3):** Por definir
 - **Idiomas:** Español (principal), Inglés (documentación técnica)
 
