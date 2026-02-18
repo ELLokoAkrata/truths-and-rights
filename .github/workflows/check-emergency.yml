@@ -30,9 +30,12 @@ jobs:
         id: check
         run: |
           cd scripts
+          set +e
           python scrape_official.py --check-emergency --output-json
-          echo "exit_code=$?" >> $GITHUB_OUTPUT
-        continue-on-error: true
+          EXIT_CODE=$?
+          echo "exit_code=$EXIT_CODE" >> $GITHUB_OUTPUT
+          # Exit code 1 = hay renovaciones por verificar, no es error de workflow.
+          exit 0
 
       - name: Leer resultado
         id: result
