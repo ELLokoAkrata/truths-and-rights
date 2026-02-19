@@ -30,9 +30,19 @@ jobs:
         id: check
         run: |
           cd scripts
+          set +e
           python scrape_official.py --check-updates --output-json
-          echo "exit_code=$?" >> $GITHUB_OUTPUT
-        continue-on-error: true
+          EXIT_CODE=$?
+          echo "exit_code=$EXIT_CODE" >> "$GITHUB_OUTPUT"
+
+          # Semantica del script:
+          # 0 = sin cambios, 1 = cambios detectados (esperado), 2 = error tecnico.
+          if [ "$EXIT_CODE" -eq 2 ]; then
+            echo "::error::El verificador de fuentes fallo con codigo 2."
+            exit 2
+          fi
+
+          exit 0
 
       - name: Leer resultado
         id: result
@@ -77,13 +87,17 @@ jobs:
       - name: Crear Issue si hay fuentes desactualizadas
         if: steps.result.outputs.needs_update != '0'
         run: |
-          EXISTING=$(gh issue list --label "legal-data,legal-review" --state open --limit 1 --json number -q '.[0].number' || echo "")
+          EXISTING=$(gh issue list --label "legal-data" --state open --limit 1 --json number -q '.[0].number' || echo "")
           if [ -z "$EXISTING" ]; then
             BODY=$(cat issue_body.txt 2>/dev/null || echo "Verificacion automatica detecto fuentes desactualizadas.")
             gh issue create \
               --title "Fuentes legales: revision de vigencia necesaria" \
               --body "$BODY" \
-              --label "legal-data,legal-review"
+              --label "legal-data" \
+              --label "legal-review" || \
+            gh issue create \
+              --title "Fuentes legales: revision de vigencia necesaria" \
+              --body "$BODY"
           else
             echo "Issue #$EXISTING ya existe, no se crea duplicado."
           fi

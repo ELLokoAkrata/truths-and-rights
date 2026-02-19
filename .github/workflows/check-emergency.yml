@@ -30,9 +30,19 @@ jobs:
         id: check
         run: |
           cd scripts
+          set +e
           python scrape_official.py --check-emergency --output-json
-          echo "exit_code=$?" >> $GITHUB_OUTPUT
-        continue-on-error: true
+          EXIT_CODE=$?
+          echo "exit_code=$EXIT_CODE" >> "$GITHUB_OUTPUT"
+
+          # Semantica del script:
+          # 0 = sin cambios, 1 = cambios detectados (esperado), 2 = error tecnico.
+          if [ "$EXIT_CODE" -eq 2 ]; then
+            echo "::error::El verificador de emergencia fallo con codigo 2."
+            exit 2
+          fi
+
+          exit 0
 
       - name: Leer resultado
         id: result
@@ -80,14 +90,19 @@ jobs:
       - name: Crear Issue si hay cambios
         if: steps.result.outputs.needs_update != '0'
         run: |
-          # De-duplicacion: no crear issue si ya existe uno abierto con el mismo label
-          EXISTING=$(gh issue list --label "legal-data,urgent,country:PE" --state open --limit 1 --json number -q '.[0].number' || echo "")
+          # De-duplicacion: no crear issue si ya existe uno abierto
+          EXISTING=$(gh issue list --label "legal-data" --state open --limit 1 --json number -q '.[0].number' || echo "")
           if [ -z "$EXISTING" ]; then
             BODY=$(cat issue_body.txt 2>/dev/null || echo "Verificacion automatica detecto cambios en estado de emergencia.")
             gh issue create \
               --title "Estado de emergencia: verificar renovacion de decreto" \
               --body "$BODY" \
-              --label "legal-data,urgent,country:PE"
+              --label "legal-data" \
+              --label "urgent" \
+              --label "country:PE" || \
+            gh issue create \
+              --title "Estado de emergencia: verificar renovacion de decreto" \
+              --body "$BODY"
           else
             echo "Issue #$EXISTING ya existe, no se crea duplicado."
           fi
