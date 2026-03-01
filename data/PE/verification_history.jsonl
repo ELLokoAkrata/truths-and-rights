@@ -1,3 +1,4 @@
 {"timestamp": "2026-02-08T01:09:48.920302", "check_type": "emergency", "verified_count": 1, "needs_update_count": 0, "errors_count": 0, "summary": "Emergencia: todo vigente", "details": {"needs_update": [], "errors": []}}
 {"timestamp": "2026-02-08T01:10:32.559521", "check_type": "emergency", "verified_count": 1, "needs_update_count": 0, "errors_count": 0, "summary": "Emergencia: todo vigente", "details": {"needs_update": [], "errors": []}}
 {"timestamp": "2026-02-09T14:51:30.500300", "check_type": "emergency", "verified_count": 1, "needs_update_count": 0, "errors_count": 0, "summary": "Emergencia: todo vigente", "details": {"needs_update": [], "errors": []}}
+{"timestamp": "2026-03-01T06:56:35.370723", "check_type": "full_scrape", "verified_count": 0, "needs_update_count": 0, "errors_count": 0, "summary": "Scrape completo: 0 OK, 0 cambios detectados, 0 errores", "details": {"needs_update": [], "errors": []}}
