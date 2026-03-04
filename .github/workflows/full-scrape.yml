@@ -58,8 +58,16 @@ jobs:
             echo "needs_update=0" >> $GITHUB_OUTPUT
           fi
 
+      - name: Crear labels si no existen
+        if: steps.changes.outputs.needs_update != '0'
+        run: |
+          gh label create "legal-data" --color "#0075ca" --description "Datos legales que requieren revision" --force || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Crear Issue si hay cambios detectados
         if: steps.changes.outputs.needs_update != '0'
+        continue-on-error: true
         run: |
           EXISTING=$(gh issue list --label "legal-data" --state open --limit 1 --json number -q '.[0].number' || echo "")
           if [ -z "$EXISTING" ]; then

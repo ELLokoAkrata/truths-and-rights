@@ -74,10 +74,19 @@ jobs:
             echo "needs_update=0" >> $GITHUB_OUTPUT
           fi
 
-      - name: Crear Issue si hay fuentes desactualizadas
+      - name: Crear labels si no existen
         if: steps.result.outputs.needs_update != '0'
         run: |
-          EXISTING=$(gh issue list --label "legal-data,legal-review" --state open --limit 1 --json number -q '.[0].number' || echo "")
+          gh label create "legal-data" --color "#0075ca" --description "Datos legales que requieren revision" --force || true
+          gh label create "legal-review" --color "#7c3aed" --description "Requiere revision legal" --force || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Crear Issue si hay fuentes desactualizadas
+        if: steps.result.outputs.needs_update != '0'
+        continue-on-error: true
+        run: |
+          EXISTING=$(gh issue list --label "legal-data" --state open --limit 1 --json number -q '.[0].number' || echo "")
           if [ -z "$EXISTING" ]; then
             BODY=$(cat issue_body.txt 2>/dev/null || echo "Verificacion automatica detecto fuentes desactualizadas.")
             gh issue create \

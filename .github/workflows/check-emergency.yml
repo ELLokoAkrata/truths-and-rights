@@ -80,11 +80,21 @@ jobs:
             echo "needs_update=0" >> $GITHUB_OUTPUT
           fi
 
-      - name: Crear Issue si hay cambios
+      - name: Crear labels si no existen
         if: steps.result.outputs.needs_update != '0'
         run: |
+          gh label create "legal-data" --color "#0075ca" --description "Datos legales que requieren revision" --force || true
+          gh label create "urgent" --color "#e11d48" --description "Requiere atencion urgente" --force || true
+          gh label create "country:PE" --color "#16a34a" --description "Peru" --force || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Crear Issue si hay cambios
+        if: steps.result.outputs.needs_update != '0'
+        continue-on-error: true
+        run: |
           # De-duplicacion: no crear issue si ya existe uno abierto con el mismo label
-          EXISTING=$(gh issue list --label "legal-data,urgent,country:PE" --state open --limit 1 --json number -q '.[0].number' || echo "")
+          EXISTING=$(gh issue list --label "legal-data" --state open --limit 1 --json number -q '.[0].number' || echo "")
           if [ -z "$EXISTING" ]; then
             BODY=$(cat issue_body.txt 2>/dev/null || echo "Verificacion automatica detecto cambios en estado de emergencia.")
             gh issue create \

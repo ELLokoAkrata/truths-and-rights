@@ -18,7 +18,7 @@
     "description": "Declarado por incremento del crimen organizado. La PNP mantiene control del orden interno con apoyo de Fuerzas Armadas. Suspende 4 derechos específicos pero NO suspende: dignidad, integridad, debido proceso, comunicaciones, hábeas corpus.",
     "context_type": "estado_emergencia",
     "affects_rights": ["right_home_inviolability"],
-    "is_currently_active": true,
+    "is_currently_active": false,
     "active_regions": ["Lima Metropolitana", "Callao"],
     "decree_number": "DS N° 006-2026-PCM",
     "start_date": "2026-01-20",

@@ -19,7 +19,8 @@
     "substances": "partial",
     "review_by_lawyer": false
   },
-  "active_emergencies": [
+  "active_emergencies": [],
+  "expired_emergencies": [
     {
       "type": "seguridad_ciudadana",
       "decree": "DS N° 006-2026-PCM",
@@ -27,7 +28,8 @@
       "start_date": "2026-01-20",
       "end_date": "2026-02-19",
       "suspends": ["libertad_personal", "inviolabilidad_domicilio", "libertad_transito", "libertad_reunion"],
-      "includes_curfew": false
+      "includes_curfew": false,
+      "note": "Vencido el 2026-02-19. Verificar si fue renovado en El Peruano."
     }
   ],
   "key_statistics": {
@@ -45,6 +47,6 @@
     "defensoria": "https://www.defensoria.gob.pe"
   },
   "contributors": [],
-  "last_verified": "2026-02-07",
+  "last_verified": "2026-03-04",
   "notes": "Versión inicial basada en investigación exhaustiva del marco legal. Pendiente revisión por abogado."
 }

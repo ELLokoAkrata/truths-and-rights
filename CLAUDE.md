@@ -62,7 +62,7 @@ make mobile-test       # Jest tests de la app
 - App movil completa: pantallas, navegacion, DB, busqueda, tests
 - Portal publico en https://ellokoakrata.github.io/truths-and-rights/
 - Automatizacion: check semanal de emergencia, quincenal de fuentes, mensual scrape
-- Decreto vigente: DS N° 006-2026-PCM vence 2026-02-19
+- Decreto DS N° 006-2026-PCM venció 2026-02-19 (marcado como expirado). Verificar si fue renovado en El Peruano.
 
 ## Skills disponibles
 
